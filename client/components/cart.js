@@ -1,26 +1,53 @@
-import React from 'react'
+import React, {Component} from 'react'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
-
+import {removeItem} from '../store/cart'
+import {Order} from './order'
+import {Link} from 'react-router-dom'
 /**
  * COMPONENT
  */
-export const Cart = props => {
-  const {cart} = props
-  console.log(cart)
-  return (
-    <div>
-      <h3>Here are all the products in your cart: </h3>
-      {cart.map(eachProduct => {
-        return(
-          <div key={eachProduct.id}>
-          <h2>Name: {eachProduct.name}</h2>
-          <h2>Price: {eachProduct.price}</h2>
-          </div>
-        )
-      })}
-    </div>
-  )
+
+export class Cart extends Component {
+  constructor(props) {
+    super(props)
+    this.handleClick = this.handleClick.bind(this)
+    this.orderItem = this.orderItem.bind(this)
+  }
+
+  handleClick(product) {
+    this.props.deleteFromCart(product)
+  }
+
+  orderItem() {
+    return <Order />
+  }
+
+  render() {
+    return (
+      <div>
+        <h3>Here are all the products in your cart: </h3>
+        {this.props.cart.map(eachProduct => {
+          console.log('EACH PRODUCT', eachProduct)
+          return (
+            <div key={eachProduct.id}>
+              <h2>Name: {eachProduct.name}</h2>
+              <h2>Price: {eachProduct.price}</h2>
+              <button
+                type="button"
+                onClick={() => this.handleClick(eachProduct)}
+              >
+                remove
+              </button>
+            </div>
+          )
+        })}
+        <button type="button" onClick={() => <Link to="/order"> Order</Link>}>
+          Order
+        </button>
+      </div>
+    )
+  }
 }
 
 /**
@@ -32,4 +59,10 @@ const mapState = state => {
   }
 }
 
-export default connect(mapState)(Cart)
+const mapDispatch = dispatch => {
+  return {
+    deleteFromCart: product => dispatch(removeItem(product))
+  }
+}
+
+export default connect(mapState, mapDispatch)(Cart)

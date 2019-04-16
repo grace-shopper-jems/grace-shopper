@@ -24,11 +24,11 @@ const Navbar = ({handleClick, isLoggedIn}) => (
           <Link to="/login">Login</Link>
           <Link to="/signup">Sign Up</Link>
           <Link to="/products">Products</Link>
-          <Link to="/cart">
+          <Link to="/cart">Cart</Link>
             {/* <IconButton aria-label="Shopping Cart">
               <AddShoppingCartIcon />
             </IconButton> */}
-          </Link>
+
         </div>
       )}
     </nav>

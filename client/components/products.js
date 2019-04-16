@@ -1,15 +1,21 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import {setProducts} from '../store/products'
+import {setProducts, getProducts} from '../store/products'
 
-export class Products extends Component {
+class Products extends Component {
   constructor(props) {
     super(props)
   }
+
+  componentDidMount() {
+    console.log('IN products COMPONENT DID MOUNT')
+    this.props.settingProducts()
+  }
   render() {
+    console.log(this.props)
     return (
       <div>
-        {this.props.products.map(product => {
+        {this.props.products.allProducts.map(product => {
           return (
             <div key={product.id}>
               <h2>{product.name}</h2>
@@ -31,7 +37,7 @@ const mapState = state => {
 
 const mapDispatch = dispatch => {
   return {
-    getProducts: () => dispatch(setProducts())
+    settingProducts: () => dispatch(setProducts())
   }
 }
 export default connect(mapState, mapDispatch)(Products)

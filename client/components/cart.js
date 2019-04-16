@@ -7,15 +7,17 @@ import {connect} from 'react-redux'
  */
 export const Cart = props => {
   const {cart} = props
-
+  console.log(cart)
   return (
     <div>
       <h3>Here are all the products in your cart: </h3>
       {cart.map(eachProduct => {
-        
+        return(
+          <div key={eachProduct.id}>
           <h2>Name: {eachProduct.name}</h2>
           <h2>Price: {eachProduct.price}</h2>
-        
+          </div>
+        )
       })}
     </div>
   )

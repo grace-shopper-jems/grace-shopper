@@ -1,7 +1,7 @@
 'use strict'
 
 const db = require('../server/db')
-const {User} = require('../server/db/models')
+const {User, Product} = require('../server/db/models')
 
 async function seed() {
   await db.sync({force: true})
@@ -22,7 +22,83 @@ async function seed() {
     })
   ])
 
+  const products = await Promise.all([
+    Product.create({
+      name: 'Generic A',
+      price: 2299.99,
+      diameter: 40,
+      material: 'Stainless Steel',
+      waterproof: true,
+      quantity: 20,
+      strapColor: 'Black'
+    }),
+    Product.create({
+      name: 'Generic A',
+      price: 2299.99,
+      diameter: 42,
+      material: 'Stainless Steel',
+      waterproof: true,
+      quantity: 25,
+      strapColor: 'Black'
+    }),
+    Product.create({
+      name: 'Generic B',
+      price: 12999.99,
+      diameter: 40,
+      material: 'Yellow Gold',
+      waterproof: true,
+      quantity: 5,
+      strapColor: 'Brown'
+    }),
+    Product.create({
+      name: 'Generic B',
+      price: 12999.99,
+      diameter: 42,
+      material: 'Yellow Gold',
+      waterproof: true,
+      quantity: 6,
+      strapColor: 'Brown'
+    }),
+    Product.create({
+      name: 'Generic C',
+      price: 15999.99,
+      diameter: 40,
+      material: 'White Gold',
+      waterproof: true,
+      quantity: 3,
+      strapColor: 'Black'
+    }),
+    Product.create({
+      name: 'Generic C',
+      price: 15999.99,
+      diameter: 42,
+      material: 'White Gold',
+      waterproof: true,
+      quantity: 4,
+      strapColor: 'Black'
+    }),
+    Product.create({
+      name: 'Generic D',
+      price: 57999.99,
+      diameter: 40,
+      material: 'Platinum',
+      waterproof: true,
+      quantity: 2,
+      strapColor: 'Black'
+    }),
+    Product.create({
+      name: 'Generic D',
+      price: 57999.99,
+      diameter: 40,
+      material: 'Platinum',
+      waterproof: true,
+      quantity: 3,
+      strapColor: 'Black'
+    })
+  ])
+
   console.log(`seeded ${users.length} users`)
+  console.log(`seeded ${products.length} products`)
   console.log(`seeded successfully`)
 }
 

@@ -3,6 +3,8 @@ import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 import {logout} from '../store'
+// import IconButton from '@material-ui/core/IconButton'
+// import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart'
 
 const Navbar = ({handleClick, isLoggedIn}) => (
   <div>
@@ -21,6 +23,12 @@ const Navbar = ({handleClick, isLoggedIn}) => (
           {/* The navbar will show these links before you log in */}
           <Link to="/login">Login</Link>
           <Link to="/signup">Sign Up</Link>
+          <Link to="/products">Products</Link>
+          <Link to="/cart">
+            {/* <IconButton aria-label="Shopping Cart">
+              <AddShoppingCartIcon />
+            </IconButton> */}
+          </Link>
         </div>
       )}
     </nav>

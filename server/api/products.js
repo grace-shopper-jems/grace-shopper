@@ -12,16 +12,16 @@ router.get('/', async (req, res, next) => {
 
 router.post('/', async (req, res, next) => {
   try {
-    if (req.session.user) {
+    if (req.session.passport.user) {
       const newOrder = await Order.create({
-        userid: req.session.user.id,
-        productid: Product.id
+        userId: req.session.passport.user,
+        productId: req.body.id
       })
       res.status(201).send(newOrder)
     } else {
       const guestOrder = await Order.create({
-        userid: null,
-        productid: Product.id
+        userId: null,
+        productId: req.body.id
       })
       res.status(201).send(guestOrder)
     }

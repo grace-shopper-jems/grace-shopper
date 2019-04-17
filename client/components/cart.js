@@ -41,8 +41,9 @@ export class Cart extends Component {
             </div>
           )
         })}
-
-        <Link to="/order" onClick={()=> this.submitOrder(this.props.cart)}> Order</Link>
+        <Link to="/order" onClick={() => this.submitOrder(this.props.cart)}>
+          <button type="button">Order</button>
+        </Link>
       </div>
     )
   }
@@ -60,7 +61,7 @@ const mapState = state => {
 const mapDispatch = dispatch => {
   return {
     deleteFromCart: product => dispatch(removeItem(product)),
-    completeOrder: (currentCart) => dispatch(completeOrder(currentCart))
+    completeOrder: currentCart => dispatch(completeOrder(currentCart))
   }
 }
 

@@ -12,7 +12,7 @@ router.get('/', async (req, res, next) => {
 
 router.post('/', async (req, res, next) => {
   try {
-    if (req.session.passport.user) {
+    if (req.session && req.session.passport) {
       const newOrder = await Order.create({
         userId: req.session.passport.user,
         productId: req.body.id

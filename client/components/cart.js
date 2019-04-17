@@ -37,7 +37,9 @@ export class Cart extends Component {
             </div>
           )
         })}
-        <Link to="/order"> Order</Link>
+        <Link to="/order">
+          <button type="button">Order</button>
+        </Link>
       </div>
     )
   }

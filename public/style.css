@@ -61,7 +61,8 @@ a {
 }
 
 .products,
-.cart {
+.cart,
+.order {
   height: 100%;
   padding: 90px 10px 10px 10px;
 }

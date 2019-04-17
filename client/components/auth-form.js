@@ -10,45 +10,84 @@ const AuthForm = props => {
   const {name, displayName, handleSubmit, error} = props
   console.log(name)
   return (
-    <div>
-      <form onSubmit={handleSubmit} name={name}>
-        {name === 'signup' ? (
-          <div>
+    <div className="login">
+      <div className="login__container">
+        <form onSubmit={handleSubmit} name={name} className="signup-form">
+          {name === 'signup' ? (
             <div>
-              <label htmlFor="firstName">
-                <small>First Name</small>
-              </label>
-              <input name="firstName" type="text" />
+              <input
+                name="firstName"
+                type="text"
+                placeholder="First Name"
+                className="input"
+              />
+              <input
+                name="lastName"
+                type="text"
+                placeholder="Last Name"
+                className="input"
+              />
             </div>
-            <div>
-              <label htmlFor="lastName">
-                <small>Last Name</small>
-              </label>
-              <input name="lastName" type="text" />
-            </div>
-          </div>
-        ) : (
-          ''
-        )}
-        <div>
-          <label htmlFor="email">
-            <small>Email</small>
-          </label>
-          <input name="email" type="text" />
-        </div>
-        <div>
-          <label htmlFor="password">
-            <small>Password</small>
-          </label>
-          <input name="password" type="password" />
-        </div>
-        <div>
-          <button type="submit">{displayName}</button>
-        </div>
-        {error && error.response && <div> {error.response.data} </div>}
-      </form>
-      <a href="/auth/google">{displayName} with Google</a>
+          ) : (
+            ''
+          )}
+          <input
+            name="email"
+            type="text"
+            placeholder="Email"
+            className="input"
+          />
+          <input
+            name="password"
+            type="password"
+            placeholder="Password"
+            className="input"
+          />
+          <button type="submit" className="btn">
+            {displayName}
+          </button>
+        </form>
+      </div>
     </div>
+    // <div>
+    //   <form onSubmit={handleSubmit} name={name}>
+    //     {name === 'signup' ? (
+    //       <div>
+    //         <div>
+    //           <label htmlFor="firstName">
+    //             <small>First Name</small>
+    //           </label>
+    //           <input name="firstName" type="text" />
+    //         </div>
+    //         <div>
+    //           <label htmlFor="lastName">
+    //             <small>Last Name</small>
+    //           </label>
+    //           <input name="lastName" type="text" />
+    //         </div>
+    //       </div>
+    //     ) : (
+    //       ''
+    //     )}
+    //     <div>
+    //       <label htmlFor="email">
+    //         <small>Email</small>
+    //       </label>
+    //       <input name="email" type="text" />
+    //     </div>
+    //     <div>
+    //       <label htmlFor="password">
+    //         <small>Password</small>
+    //       </label>
+    //       <input name="password" type="password" />
+    //     </div>
+    //     <div>
+    //       <button type="submit">{displayName}</button>
+    //     </div>
+    //     {error && error.response && <div> {error.response.data} </div>}
+    //   </form>
+    //   <a href="/auth/google">{displayName} with Google</a>
+    // </div>
   )
 }
 

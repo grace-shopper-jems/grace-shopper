@@ -19,7 +19,7 @@ const Navbar = ({handleClick, isLoggedIn}) => (
     </div>
     <div className="navbar__login">
       <div className="navbar__position">
-        <Link to="/register">REGISTER</Link>
+        <Link to="/signup">REGISTER</Link>
         {isLoggedIn ? (
           <a href="#" onClick={handleClick}>
             LOG OUT

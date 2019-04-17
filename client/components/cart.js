@@ -12,15 +12,10 @@ export class Cart extends Component {
   constructor(props) {
     super(props)
     this.handleClick = this.handleClick.bind(this)
-    this.orderItem = this.orderItem.bind(this)
   }
 
   handleClick(product) {
     this.props.deleteFromCart(product)
-  }
-
-  orderItem() {
-    return <Order />
   }
 
   render() {
@@ -42,9 +37,7 @@ export class Cart extends Component {
             </div>
           )
         })}
-        <button type="button" onClick={() => <Link to="/order"> Order</Link>}>
-          Order
-        </button>
+        <Link to="/order"> Order</Link>
       </div>
     )
   }

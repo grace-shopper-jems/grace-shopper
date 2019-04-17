@@ -22,6 +22,22 @@ export const addToCart = product => ({type: ADD_TO_CART, product})
 export const removeItem = product => ({type: REMOVE_ITEM, product})
 export const clearCart = () => ({type: CLEAR_CART})
 
+/**
+ * THUNK CREATORS
+ */
+
+export const completeOrder = () => async dispatch => {
+  try {
+    let currentCart = await dispatch(getCart())
+    currentCart.map(async cartItem => {
+      await axios.post('/api/products', cartItem)
+    })
+    dispatch(clearCart())
+  } catch (error) {
+    console.error(error)
+  }
+}
+
 export default function(state = cart, action) {
   switch (action.type) {
     case GET_CART:

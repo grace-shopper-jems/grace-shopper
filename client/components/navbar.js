@@ -5,35 +5,34 @@ import {Link} from 'react-router-dom'
 import {logout} from '../store'
 
 const Navbar = ({handleClick, isLoggedIn}) => (
-  <div id="app">
-    <header className="navbar">
-      <nav className="navbar__menu">
-        <Link to="/home" className="navbar__link">
-          HOME
-        </Link>
-        <Link to="/products" className="navbar__link">
-          WATCHES
-        </Link>
-      </nav>
-      <div className="navbar__logo">
-        <h1>Jems</h1>
+  <header className="navbar">
+    <nav className="navbar__menu">
+      <Link to="/home" className="navbar__link">
+        HOME
+      </Link>
+      <Link to="/products" className="navbar__link">
+        WATCHES
+      </Link>
+    </nav>
+    <div className="navbar__logo">
+      <h1>Jems</h1>
+    </div>
+    <div className="navbar__login">
+      <div className="navbar__position">
+        <Link to="/register">REGISTER</Link>
+        {isLoggedIn ? (
+          <a href="#" onClick={handleClick}>
+            LOG OUT
+          </a>
+        ) : (
+          <Link to="/login">LOG IN</Link>
+        )}
+        <span>|</span>
+        <Link to="/cart">Cart</Link>
       </div>
-      <div className="navbar__login">
-        <div className="navbar__position">
-          <Link to="/register">REGISTER</Link>
-          {isLoggedIn ? (
-            <a href="#" onClick={handleClick}>
-              LOG OUT
-            </a>
-          ) : (
-            <Link to="/login">LOG IN</Link>
-          )}
-          <span>|</span>
-          <Link to="/cart">Cart</Link>
-        </div>
-      </div>
-    </header>
-  </div>
+    </div>
+  </header>
+
   // <div>
   //   <h1>BOILERMAKER</h1>
   //   <nav>

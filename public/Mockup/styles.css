@@ -82,6 +82,9 @@ a {
   justify-content: space-between;
   padding: 10px;
 }
+.products__title {
+  text-transform: uppercase;
+}
 .products__img {
   width: 100%;
 }

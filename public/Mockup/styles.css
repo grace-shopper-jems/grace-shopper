@@ -60,9 +60,7 @@ a {
   padding-top: 80px;
 }
 
-.products,
-.cart,
-.order {
+.products {
   height: 100%;
   padding: 90px 10px 10px 10px;
 }
@@ -72,7 +70,7 @@ a {
   justify-content: flex-start;
 }
 .products__spacing {
-  min-height: 400px;
+  height: 400px;
   flex-basis: 20%;
   padding: 10px;
 }
@@ -131,25 +129,3 @@ a {
   letter-spacing: 1px;
   outline: none;
 }
-
-/* body {
-  font-family: sans-serif;
-}
-
-a {
-  text-decoration: none;
-}
-
-label {
-  display: block;
-}
-
-nav a {
-  display: inline-block;
-  margin: 1em;
-}
-
-form div {
-  margin: 1em;
-  display: inline-block;
-} */

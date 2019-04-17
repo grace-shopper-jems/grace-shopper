@@ -24,7 +24,7 @@ export class Cart extends Component {
 
   render() {
     return (
-      <div>
+      <div className="cart">
         <h3>Here are all the products in your cart: </h3>
         {this.props.cart.map(eachProduct => {
           console.log('EACH PRODUCT', eachProduct)
@@ -41,6 +41,7 @@ export class Cart extends Component {
             </div>
           )
         })}
+
         <Link to="/order" onClick={()=> this.submitOrder(this.props.cart)}> Order</Link>
       </div>
     )

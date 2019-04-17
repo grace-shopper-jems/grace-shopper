@@ -3,38 +3,64 @@ import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 import {logout} from '../store'
-// import IconButton from '@material-ui/core/IconButton'
-// import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart'
 
 const Navbar = ({handleClick, isLoggedIn}) => (
-  <div>
-    <h1>BOILERMAKER</h1>
-    <nav>
-      {isLoggedIn ? (
-        <div>
-          {/* The navbar will show these links after you log in */}
-          <Link to="/home">Home</Link>
-          <Link to="/products">Products</Link>
-          <Link to="/cart">Cart</Link>
-          <a href="#" onClick={handleClick}>
-            Logout
-          </a>
-        </div>
-      ) : (
-        <div>
-          {/* The navbar will show these links before you log in */}
-          <Link to="/login">Login</Link>
-          <Link to="/signup">Sign Up</Link>
-          <Link to="/products">Products</Link>
-          <Link to="/cart">Cart</Link>
-          {/* <IconButton aria-label="Shopping Cart">
-              <AddShoppingCartIcon />
-            </IconButton> */}
-        </div>
-      )}
+  <header className="navbar">
+    <nav className="navbar__menu">
+      <Link to="/home" className="navbar__link">
+        HOME
+      </Link>
+      <Link to="/products" className="navbar__link">
+        WATCHES
+      </Link>
     </nav>
-    <hr />
-  </div>
+    <div className="navbar__logo">
+      <h1>Jems</h1>
+    </div>
+    <div className="navbar__login">
+      <div className="navbar__position">
+        <Link to="/signup">REGISTER</Link>
+        {isLoggedIn ? (
+          <a href="#" onClick={handleClick}>
+            LOG OUT
+          </a>
+        ) : (
+          <Link to="/login">LOG IN</Link>
+        )}
+        <span>|</span>
+        <Link to="/cart">Cart</Link>
+      </div>
+    </div>
+  </header>
+
+  // <div>
+  //   <h1>BOILERMAKER</h1>
+  //   <nav>
+  //     {isLoggedIn ? (
+  //       <div>
+  //         {/* The navbar will show these links after you log in */}
+  //         <Link to="/home">Home</Link>
+  //         <Link to="/products">Products</Link>
+  //         <Link to="/cart">Cart</Link>
+  //         <a href="#" onClick={handleClick}>
+  //           Logout
+  //         </a>
+  //       </div>
+  //     ) : (
+  //       <div>
+  //         {/* The navbar will show these links before you log in */}
+  //         <Link to="/login">Login</Link>
+  //         <Link to="/signup">Sign Up</Link>
+  //         <Link to="/products">Products</Link>
+  //         <Link to="/cart">Cart</Link>
+  //         {/* <IconButton aria-label="Shopping Cart">
+  //             <AddShoppingCartIcon />
+  //           </IconButton> */}
+  //       </div>
+  //     )}
+  //   </nav>
+  //   <hr />
+  // </div>
 )
 
 /**

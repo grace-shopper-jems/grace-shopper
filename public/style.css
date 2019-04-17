@@ -71,7 +71,7 @@ a {
   justify-content: flex-start;
 }
 .products__spacing {
-  height: 400px;
+  min-height: 400px;
   flex-basis: 20%;
   padding: 10px;
 }

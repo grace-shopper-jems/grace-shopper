@@ -17,7 +17,7 @@ const cart = []
  * ACTION CREATORS
  */
 
-export const getCart = () => ({type: GET_CART})
+export const getCart = (products) => ({type: GET_CART, products})
 export const addToCart = product => ({type: ADD_TO_CART, product})
 export const removeItem = product => ({type: REMOVE_ITEM, product})
 export const clearCart = () => ({type: CLEAR_CART})
@@ -26,9 +26,8 @@ export const clearCart = () => ({type: CLEAR_CART})
  * THUNK CREATORS
  */
 
-export const completeOrder = () => async dispatch => {
+export const completeOrder = (currentCart) => dispatch => {
   try {
-    let currentCart = await dispatch(getCart())
     currentCart.map(async cartItem => {
       await axios.post('/api/products', cartItem)
     })
@@ -41,7 +40,7 @@ export const completeOrder = () => async dispatch => {
 export default function(state = cart, action) {
   switch (action.type) {
     case GET_CART:
-      return state
+      return action.products
     case ADD_TO_CART:
       console.log('CART', state)
       console.log('....ACTION.PRODUCT', action.product)

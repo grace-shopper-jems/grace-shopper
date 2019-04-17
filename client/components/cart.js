@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
-import {removeItem} from '../store/cart'
+import {removeItem, completeOrder} from '../store/cart'
 import {Link} from 'react-router-dom'
 /**
  * COMPONENT
@@ -11,10 +11,15 @@ export class Cart extends Component {
   constructor(props) {
     super(props)
     this.handleClick = this.handleClick.bind(this)
+    this.submitOrder = this.submitOrder.bind(this)
   }
 
   handleClick(product) {
     this.props.deleteFromCart(product)
+  }
+
+  submitOrder(currentCart) {
+    this.props.completeOrder(currentCart)
   }
 
   render() {
@@ -36,7 +41,7 @@ export class Cart extends Component {
             </div>
           )
         })}
-        <Link to="/order">
+        <Link to="/order" onClick={() => this.submitOrder(this.props.cart)}>
           <button type="button">Order</button>
         </Link>
       </div>
@@ -55,7 +60,8 @@ const mapState = state => {
 
 const mapDispatch = dispatch => {
   return {
-    deleteFromCart: product => dispatch(removeItem(product))
+    deleteFromCart: product => dispatch(removeItem(product)),
+    completeOrder: currentCart => dispatch(completeOrder(currentCart))
   }
 }
 

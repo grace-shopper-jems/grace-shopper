@@ -12,6 +12,8 @@ export class Cart extends Component {
     super(props)
     this.handleClick = this.handleClick.bind(this)
     this.submitOrder = this.submitOrder.bind(this)
+    this.groupCart = this.groupCart.bind(this)
+    this.total = this.total.bind(this)
   }
 
   handleClick(product) {
@@ -21,17 +23,53 @@ export class Cart extends Component {
   submitOrder(currentCart) {
     this.props.completeOrder(currentCart)
   }
-
+  groupCart(cart) {
+    let groupedCart = []
+    for (let i = 0; i < cart.length; i++) {
+      let id = cart[i].id
+      let price = cart[i].price
+      let name = cart[i].name
+      let diameter = cart[i].diameter
+      let material = cart[i].material
+      let strapColor = cart[i].strapColor
+      let waterproof = cart[i].waterproof
+      if (groupedCart.findIndex(e => e.id === id) !== -1) {
+        let index = groupedCart.findIndex(e => e.id === id)
+        groupedCart[index].quantity++
+      } else {
+        groupedCart.push({
+          id,
+          price,
+          name,
+          diameter,
+          material,
+          strapColor,
+          waterproof,
+          quantity: 1
+        })
+      }
+    }
+    return groupedCart
+  }
+  total(cart) {
+    let total = 0
+    for (let i = 0; i < cart.length; i++) {
+      let itemPrice = Number(cart[i].price)
+      total += itemPrice
+    }
+    return String(total)
+  }
   render() {
     return (
       <div className="cart">
         <h3>Here are all the products in your cart: </h3>
-        {this.props.cart.map(eachProduct => {
+        {this.groupCart(this.props.cart).map(eachProduct => {
           console.log('EACH PRODUCT', eachProduct)
           return (
             <div key={eachProduct.id}>
               <h2>Name: {eachProduct.name}</h2>
               <h2>Price: {eachProduct.price}</h2>
+              <h2>Quantity: {eachProduct.quantity}</h2>
               <button
                 type="button"
                 onClick={() => this.handleClick(eachProduct)}
@@ -41,6 +79,7 @@ export class Cart extends Component {
             </div>
           )
         })}
+        <h1>Total: {this.total(this.props.cart)}</h1>
         <Link to="/order" onClick={() => this.submitOrder(this.props.cart)}>
           <button type="button">Order</button>
         </Link>

@@ -64,7 +64,6 @@ export class Cart extends Component {
       <div className="cart">
         <h3>Here are all the products in your cart: </h3>
         {this.groupCart(this.props.cart).map(eachProduct => {
-          console.log('EACH PRODUCT', eachProduct)
           return (
             <div key={eachProduct.id}>
               <h2>Name: {eachProduct.name}</h2>

@@ -129,3 +129,9 @@ a {
   letter-spacing: 1px;
   outline: none;
 }
+
+.cart {
+  min-height: 100vh;
+  padding: 90px 10px 10px 10px;
+  background-color: red;
+}

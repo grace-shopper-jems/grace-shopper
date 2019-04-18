@@ -16,7 +16,10 @@ const middleware = composeWithDevTools(
 const persistedState = loadState()
 
 const store = createStore(reducer, persistedState, middleware)
+// const store = createStore(reducer, middleware)
 
+// let result = store.getState()
+// console.log('resssult', result)
 store.subscribe(
   throttle(() => {
     saveState({

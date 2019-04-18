@@ -44,10 +44,9 @@ export const completeOrder = currentCart => dispatch => {
   }
 }
 
-export const addToOrder = (product) => async dispatch => {
+export const addToOrder = product => async dispatch => {
   try {
     await axios.post('/api/products', product)
-
   } catch (error) {
     console.error(error)
   }
@@ -58,8 +57,8 @@ export default function(state = initialState, action) {
     case GET_CART:
       return action.products
     case ADD_TO_CART:
-      console.log('CART', state)
-      console.log('....ACTION.PRODUCT', action.product)
+      // console.log('CART', state)
+      // console.log('....ACTION.PRODUCT', action.product)
       state.quantity++
       return {...state, cart: [...state.cart, action.product]}
     case REMOVE_ITEM:

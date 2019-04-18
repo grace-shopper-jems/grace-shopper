@@ -65,7 +65,8 @@ a {
 }
 .products,
 .cart,
-.order {
+.order,
+.userHome {
   height: 100%;
   padding: 90px 10px 10px 10px;
 }

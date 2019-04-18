@@ -15,13 +15,15 @@ router.post('/', async (req, res, next) => {
     if (req.session && req.session.passport) {
       const newOrder = await Order.create({
         userId: req.session.passport.user,
-        productId: req.body.id
+        productId: req.body.id,
+        fulfilled: true
       })
       res.status(201).send(newOrder)
     } else {
       const guestOrder = await Order.create({
         userId: null,
-        productId: req.body.id
+        productId: req.body.id,
+        fulfilled: true
       })
       res.status(201).send(guestOrder)
     }

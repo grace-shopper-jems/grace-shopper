@@ -23,17 +23,18 @@ export class Cart extends Component {
   submitOrder(currentCart) {
     this.props.completeOrder(currentCart)
   }
-  groupCart(cart) {
-    console.log(cart)
+  groupCart() {
+    const {cart} = this.props
+    console.log('123455', cart)
     let groupedCart = []
-    for (let i = 0; i < cart.length; i++) {
-      let id = cart[i].id
-      let price = cart[i].price
-      let name = cart[i].name
-      let diameter = cart[i].diameter
-      let material = cart[i].material
-      let strapColor = cart[i].strapColor
-      let waterproof = cart[i].waterproof
+    for (let i = 0; i < cart.cart.length; i++) {
+      let id = cart.cart[i].id
+      let price = cart.cart[i].price
+      let name = cart.cart[i].name
+      let diameter = cart.cart[i].diameter
+      let material = cart.cart[i].material
+      let strapColor = cart.cart[i].strapColor
+      let waterproof = cart.cart[i].waterproof
       if (groupedCart.findIndex(e => e.id === id) !== -1) {
         let index = groupedCart.findIndex(e => e.id === id)
         groupedCart[index].quantity++
@@ -50,6 +51,8 @@ export class Cart extends Component {
         })
       }
     }
+
+    console.log(groupedCart)
     return groupedCart
   }
   total(cart) {
@@ -61,11 +64,12 @@ export class Cart extends Component {
     return total
   }
   render() {
-    console.log('THIS.PROPS.CART.CART', this.props.cart.cart)
+    // console.log('THIS.PROPS.CART.CART', this.props)
     return (
       <div className="cart">
         <h3>Here are all the products in your cart: </h3>
-        {this.groupCart(this.props.cart.cart).map(eachProduct => {
+        {console.log('BEFORE MAP OF GROUP CART')}
+        {this.groupCart().map(eachProduct => {
           console.log('EACH PRODUCT', eachProduct)
 
           return (
@@ -101,7 +105,7 @@ export class Cart extends Component {
  * CONTAINER
  */
 const mapState = state => {
-  console.log('STATE', state)
+  // console.log('STATE', state)
   return {
     cart: state.cart
   }

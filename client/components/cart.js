@@ -16,8 +16,8 @@ export class Cart extends Component {
     this.total = this.total.bind(this)
   }
 
-  handleClick(product) {
-    this.props.deleteFromCart(product)
+  handleClick(product, quantity) {
+    this.props.deleteFromCart(product, quantity)
   }
 
   submitOrder(currentCart) {
@@ -57,13 +57,16 @@ export class Cart extends Component {
       let itemPrice = Number(cart[i].price)
       total += itemPrice
     }
-    return String(total)
+    return total
   }
   render() {
+    console.log(this.props.cart)
     return (
       <div className="cart">
         <h3>Here are all the products in your cart: </h3>
-        {this.groupCart(this.props.cart).map(eachProduct => {
+        {this.groupCart(this.props.cart.cart).map(eachProduct => {
+          console.log('EACH PRODUCT', eachProduct)
+
           return (
             <div key={eachProduct.id}>
               <h2>Name: {eachProduct.name}</h2>
@@ -71,15 +74,21 @@ export class Cart extends Component {
               <h2>Quantity: {eachProduct.quantity}</h2>
               <button
                 type="button"
-                onClick={() => this.handleClick(eachProduct)}
+                onClick={() =>
+                  this.handleClick(eachProduct, eachProduct.quantity)
+                }
               >
                 remove
               </button>
             </div>
           )
         })}
-        <h1>Total: {this.total(this.props.cart)}</h1>
-        <Link to="/order" onClick={() => this.submitOrder(this.props.cart)}>
+        <h1>Sub-Total: {this.total(this.props.cart.cart)}</h1>
+
+        <Link
+          to="/order"
+          onClick={() => this.submitOrder(this.props.cart.cart)}
+        >
           <button type="button">Order</button>
         </Link>
       </div>
@@ -98,7 +107,8 @@ const mapState = state => {
 
 const mapDispatch = dispatch => {
   return {
-    deleteFromCart: product => dispatch(removeItem(product)),
+    deleteFromCart: (product, quantity) =>
+      dispatch(removeItem(product, quantity)),
     completeOrder: currentCart => dispatch(completeOrder(currentCart))
   }
 }

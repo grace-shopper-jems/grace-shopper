@@ -12,13 +12,33 @@ async function seed() {
       firstName: 'Cody',
       lastName: 'The Pug',
       email: 'cody@email.com',
-      password: '123'
+      password: '123',
+      isAdmin: true,
+      phoneNumber: '917-456-2859',
+      streetAddressShip: '123 baker street',
+      cityShip: 'New York',
+      stateShip: 'NY',
+      zipShip: 10001,
+      streetAddressBill: '123 baker street',
+      cityBill: 'New York',
+      stateBill: 'New York',
+      zipBill: 10001
     }),
     User.create({
       firstName: 'Murphy',
       lastName: 'The Cat',
       email: 'murphy@email.com',
-      password: '123'
+      password: '123',
+      isAdmin: false,
+      phoneNumber: '917-456-1111',
+      streetAddressShip: '122 cat street',
+      cityShip: 'New York',
+      stateShip: 'NY',
+      zipShip: 10022,
+      streetAddressBill: '111 muffin street',
+      cityBill: 'New York',
+      stateBill: 'New York',
+      zipBill: 10033
     })
   ])
 

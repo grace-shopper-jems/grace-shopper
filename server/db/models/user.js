@@ -43,6 +43,45 @@ const User = db.define('user', {
   },
   googleId: {
     type: Sequelize.STRING
+  },
+  isAdmin: {
+    type: Sequelize.BOOLEAN
+  },
+  phoneNumber: {
+    type: Sequelize.STRING,
+    allowNull: false
+  },
+  streetAddressShip: {
+    type: Sequelize.STRING,
+    allowNull: false
+  },
+  cityShip: {
+    type: Sequelize.STRING,
+    allowNull: false
+  },
+  stateShip: {
+    type: Sequelize.STRING,
+    allowNull: false
+  },
+  zipShip: {
+    type: Sequelize.INTEGER,
+    allowNull: false
+  },
+  streetAddressBill: {
+    type: Sequelize.STRING,
+    allowNull: false
+  },
+  cityBill: {
+    type: Sequelize.STRING,
+    allowNull: false
+  },
+  stateBill: {
+    type: Sequelize.STRING,
+    allowNull: false
+  },
+  zipBill: {
+    type: Sequelize.INTEGER,
+    allowNull: false
   }
 })
 

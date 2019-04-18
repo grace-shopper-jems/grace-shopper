@@ -57,8 +57,6 @@ export default function(state = initialState, action) {
     case GET_CART:
       return action.products
     case ADD_TO_CART:
-      // console.log('CART', state)
-      // console.log('....ACTION.PRODUCT', action.product)
       state.quantity++
       return {...state, cart: [...state.cart, action.product]}
     case REMOVE_ITEM:
@@ -70,7 +68,7 @@ export default function(state = initialState, action) {
         cart: state.cart.filter(product => product.id !== action.product.id)
       }
     case CLEAR_CART:
-      return []
+      return {...state, cart: [], quantity: 0}
     default:
       return state
   }

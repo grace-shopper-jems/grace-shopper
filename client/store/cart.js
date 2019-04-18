@@ -29,9 +29,18 @@ export const clearCart = () => ({type: CLEAR_CART})
 export const completeOrder = (currentCart) => dispatch => {
   try {
     currentCart.map(async cartItem => {
-      await axios.post('/api/products', cartItem)
+      await axios.put('/api/products', cartItem)
     })
     dispatch(clearCart())
+  } catch (error) {
+    console.error(error)
+  }
+}
+
+export const addToOrder = (product) => async dispatch => {
+  try {
+    await axios.post('/api/products', product)
+
   } catch (error) {
     console.error(error)
   }

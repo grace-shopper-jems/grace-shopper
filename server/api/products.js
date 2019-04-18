@@ -16,10 +16,25 @@ router.post('/', async (req, res, next) => {
       const newOrder = await Order.create({
         userId: req.session.passport.user,
         productId: req.body.id,
-        fulfilled: true
+        fulfilled: false
       })
       res.status(201).send(newOrder)
-    } else {
+    }
+  } catch (error) {
+    next(error)
+  }
+})
+
+router.put('/', async (req, res, next) => {
+  try {
+    if (req.session && req.session.passport) {
+      const newOrder = await Order.update(
+        {fulfilled: true},
+        {where: {userId: req.session.passport.user}}
+      )
+      res.status(201).send(newOrder)
+    }
+    else {
       const guestOrder = await Order.create({
         userId: null,
         productId: req.body.id,

@@ -63,6 +63,7 @@ a {
   height: 100%;
   background-color: red;
 }
+.singleProduct,
 .products,
 .cart,
 .order {
@@ -133,6 +134,9 @@ a {
   color: white;
   letter-spacing: 1px;
   outline: none;
+}
+.singleLink {
+  color: black;
 }
 
 /* body {

@@ -16,14 +16,17 @@ const middleware = composeWithDevTools(
 const persistedState = loadState()
 
 const store = createStore(reducer, persistedState, middleware)
+// const store = createStore(reducer, middleware)
 
-store.subscribe(
-  throttle(() => {
-    saveState({
-      cart: store.getState().cart
-    })
-  }, 1000)
-)
+let result = store.getState()
+console.log(result)
+// store.subscribe(
+//   throttle(() => {
+//     saveState({
+//       cart: store.getState()
+//     })
+//   }, 1000)
+// )
 
 export default store
 export * from './user'

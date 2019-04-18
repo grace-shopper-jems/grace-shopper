@@ -24,6 +24,7 @@ export class Cart extends Component {
     this.props.completeOrder(currentCart)
   }
   groupCart(cart) {
+    console.log(cart)
     let groupedCart = []
     for (let i = 0; i < cart.length; i++) {
       let id = cart[i].id
@@ -60,7 +61,7 @@ export class Cart extends Component {
     return total
   }
   render() {
-    console.log(this.props.cart)
+    console.log('THIS.PROPS.CART.CART', this.props.cart.cart)
     return (
       <div className="cart">
         <h3>Here are all the products in your cart: </h3>
@@ -100,6 +101,7 @@ export class Cart extends Component {
  * CONTAINER
  */
 const mapState = state => {
+  console.log('STATE', state)
   return {
     cart: state.cart
   }

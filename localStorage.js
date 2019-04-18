@@ -1,6 +1,7 @@
 export const loadState = () => {
   try {
     const serializedState = localStorage.getItem('cart')
+    console.log('.....!!!', serializedState)
     if (serializedState === null) {
       return undefined
     }
@@ -11,10 +12,11 @@ export const loadState = () => {
 }
 
 export const saveState = cart => {
+  console.log('cart from localStorage', cart)
   try {
     const serializedState = JSON.stringify(cart)
     localStorage.setItem('cart', serializedState)
-  } catch {
-    // ignore write errors
+  } catch (error) {
+    console.error(error)
   }
 }

@@ -61,7 +61,7 @@ export class Cart extends Component {
       let itemPrice = Number(cart[i].price)
       total += itemPrice
     }
-    return total
+    return (total / 100).toFixed(2)
   }
   render() {
     // console.log('THIS.PROPS.CART.CART', this.props)

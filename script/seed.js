@@ -45,7 +45,7 @@ async function seed() {
   const products = await Promise.all([
     Product.create({
       name: 'Generic A',
-      price: 2299.99,
+      price: 229999,
       diameter: 40,
       material: 'Stainless Steel',
       waterproof: true,
@@ -54,7 +54,7 @@ async function seed() {
     }),
     Product.create({
       name: 'Generic A',
-      price: 2299.99,
+      price: 229999,
       diameter: 42,
       material: 'Stainless Steel',
       waterproof: true,
@@ -63,7 +63,7 @@ async function seed() {
     }),
     Product.create({
       name: 'Generic B',
-      price: 12999.99,
+      price: 1299999,
       diameter: 40,
       material: 'Yellow Gold',
       waterproof: true,
@@ -72,7 +72,7 @@ async function seed() {
     }),
     Product.create({
       name: 'Generic B',
-      price: 12999.99,
+      price: 1299999,
       diameter: 42,
       material: 'Yellow Gold',
       waterproof: true,
@@ -81,7 +81,7 @@ async function seed() {
     }),
     Product.create({
       name: 'Generic C',
-      price: 15999.99,
+      price: 1599999,
       diameter: 40,
       material: 'White Gold',
       waterproof: true,
@@ -90,7 +90,7 @@ async function seed() {
     }),
     Product.create({
       name: 'Generic C',
-      price: 15999.99,
+      price: 1599999,
       diameter: 42,
       material: 'White Gold',
       waterproof: true,
@@ -99,7 +99,7 @@ async function seed() {
     }),
     Product.create({
       name: 'Generic D',
-      price: 57999.99,
+      price: 5799999,
       diameter: 40,
       material: 'Platinum',
       waterproof: true,
@@ -108,7 +108,7 @@ async function seed() {
     }),
     Product.create({
       name: 'Generic D',
-      price: 57999.99,
+      price: 5799999,
       diameter: 40,
       material: 'Platinum',
       waterproof: true,

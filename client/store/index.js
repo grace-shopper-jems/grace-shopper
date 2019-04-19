@@ -24,6 +24,7 @@ store.subscribe(
     })
   }, 1000)
 )
+// because stringify is such an expensive operation we are making sure that we are not constantly updating, but rather only every second.
 // listening to any state changes
 
 export default store

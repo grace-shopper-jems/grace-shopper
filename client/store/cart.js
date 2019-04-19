@@ -53,6 +53,17 @@ export const addToOrder = product => async dispatch => {
   }
 }
 
+export const deleteItems = (product, quantity) => async dispatch => {
+  try {
+    dispatch(removeItem(product, quantity))
+    for (let i = 0; i < quantity; i++) {
+      await axios.delete(`/api/products/${product.id}`)
+    }
+  } catch (error) {
+    console.error(error)
+  }
+}
+
 export default function(state = initialState, action) {
   switch (action.type) {
     case GET_CART:

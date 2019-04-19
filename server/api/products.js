@@ -45,10 +45,29 @@ router.put('/', async (req, res, next) => {
     } else {
       const guestOrder = await Order.create({
         userId: null,
+
         productId: req.body.id,
         fulfilled: true
       })
       res.status(201).send(guestOrder)
+    }
+  } catch (error) {
+    next(error)
+  }
+})
+
+router.delete('/:productId', async (req, res, next) => {
+  try {
+    const productId = req.params.productId
+    if (req.session && req.session.passport) {
+      await Order.destroy(
+        {where:
+          {userId: req.session.passport.user,
+          fulfilled: false,
+          productId: productId}
+        }
+      )
+      res.status(202).send("item deleted from cart")
     }
   } catch (error) {
     next(error)

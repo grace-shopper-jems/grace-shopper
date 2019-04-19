@@ -17,8 +17,6 @@ const persistedState = loadState()
 
 const store = createStore(reducer, persistedState, middleware)
 
-// const store = createStore(reducer, middleware)
-
 store.subscribe(
   throttle(() => {
     saveState({
@@ -27,5 +25,6 @@ store.subscribe(
   }, 1000)
 )
 // listening to any state changes
+
 export default store
 export * from './user'

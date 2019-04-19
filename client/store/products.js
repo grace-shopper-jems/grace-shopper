@@ -34,6 +34,15 @@ export const setProducts = () => async dispatch => {
   }
 }
 
+export const getSingleProduct = productid => async dispatch => {
+  try {
+    const {data} = await axios.get(`/api/products/${productid}`)
+    dispatch(getOneProduct(data))
+  } catch (error) {
+    console.error(error.message)
+  }
+}
+
 export default function(state = productState, action) {
   switch (action.type) {
     case GET_PRODUCTS:

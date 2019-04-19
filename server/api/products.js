@@ -10,6 +10,15 @@ router.get('/', async (req, res, next) => {
   }
 })
 
+router.get('/:id', async (req, res, next) => {
+  try {
+    const product = await Product.findByPk(req.params.id)
+    res.send(product)
+  } catch (error) {
+    next(error)
+  }
+})
+
 router.post('/', async (req, res, next) => {
   try {
     if (req.session && req.session.passport) {
@@ -33,8 +42,7 @@ router.put('/', async (req, res, next) => {
         {where: {userId: req.session.passport.user}}
       )
       res.status(201).send(newOrder)
-    }
-    else {
+    } else {
       const guestOrder = await Order.create({
         userId: null,
         productId: req.body.id,

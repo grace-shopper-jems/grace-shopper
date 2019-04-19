@@ -1,7 +1,7 @@
+
 export const loadState = () => {
   try {
     const serializedState = localStorage.getItem('state')
-    // console.log('.....!!!', serializedState)
     if (serializedState === null) {
       return undefined // the reason we need this is because there are options like privacy mode that do not allow the use of local storage. If that is the case this will return undefined and the reducers will take over and initialize the state
     }

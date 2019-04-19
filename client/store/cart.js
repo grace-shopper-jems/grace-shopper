@@ -12,6 +12,7 @@ const GET_CART = 'GET_CART'
  * INITIAL STATE
  */
 //const cart = []
+
 const initialState = {
   cart: [],
   quantity: 0
@@ -58,6 +59,7 @@ export default function(state = initialState, action) {
       return action.products
     case ADD_TO_CART:
       state.quantity++
+      console.log(initialState)
       return {...state, cart: [...state.cart, action.product]}
     case REMOVE_ITEM:
       state.quantity > 1

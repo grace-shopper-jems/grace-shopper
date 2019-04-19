@@ -75,7 +75,7 @@ export class Cart extends Component {
           return (
             <div key={eachProduct.id}>
               <h2>Name: {eachProduct.name}</h2>
-              <h2>Price: {eachProduct.price}</h2>
+              <h2>Price: {(eachProduct.price / 100).toFixed(2)}</h2>
               <h2>Quantity: {eachProduct.quantity}</h2>
               <button
                 type="button"

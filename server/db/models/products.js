@@ -29,6 +29,10 @@ const Product = db.define('product', {
   strapColor: {
     type: Sequelize.STRING,
     allowNull: false
+  },
+  imgUrl: {
+    type: Sequelize.STRING,
+    defaultValue: ''
   }
 })
 

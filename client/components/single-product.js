@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {getSingleProduct} from '../store/products'
+import {Link} from 'react-router-dom'
 
 export class SingleProduct extends Component {
   async componentDidMount() {
@@ -11,6 +12,11 @@ export class SingleProduct extends Component {
   render() {
     return (
       <div className="singleProduct">
+        <div className="back-button">
+          <Link to={'/products'} className="singleLink">
+            <h2>return to all products page</h2>
+          </Link>
+        </div>
         <span>{this.props.singleProduct.name}</span>
         <span>diameter: {this.props.singleProduct.diameter}</span>
         <span>waterproof: {this.props.singleProduct.waterproof}</span>

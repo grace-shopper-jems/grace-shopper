@@ -27,10 +27,7 @@ class Products extends Component {
             return (
               <div key={product.id} className="products__spacing">
                 <div className="products__item">
-                  <img
-                    src="petit-melrose-white.jpeg"
-                    className="products__img"
-                  />
+                  <img src={product.imgUrl} className="products__img" />
                   <span className="products__title">
                     <Link
                       to={'/products/' + product.id}

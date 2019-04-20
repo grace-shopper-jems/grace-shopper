@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
-import {removeItem, completeOrder} from '../store/cart'
+import {deleteItems, completeOrder} from '../store/cart'
 import {Link} from 'react-router-dom'
 /**
  * COMPONENT
@@ -25,7 +25,6 @@ export class Cart extends Component {
   }
   groupCart() {
     const {cart} = this.props
-    console.log('123455', cart)
     let groupedCart = []
     for (let i = 0; i < cart.cart.length; i++) {
       let id = cart.cart[i].id
@@ -114,7 +113,7 @@ const mapState = state => {
 const mapDispatch = dispatch => {
   return {
     deleteFromCart: (product, quantity) =>
-      dispatch(removeItem(product, quantity)),
+    dispatch(deleteItems(product, quantity)),
     completeOrder: currentCart => dispatch(completeOrder(currentCart))
   }
 }

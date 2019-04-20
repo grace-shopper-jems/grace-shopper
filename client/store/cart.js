@@ -37,7 +37,7 @@ export const clearCart = () => ({type: CLEAR_CART})
 export const completeOrder = currentCart => dispatch => {
   try {
     currentCart.map(async cartItem => {
-      await axios.put('/api/products', cartItem)
+      await axios.put('/api/orders', cartItem)
     })
     dispatch(clearCart())
   } catch (error) {
@@ -47,7 +47,18 @@ export const completeOrder = currentCart => dispatch => {
 
 export const addToOrder = product => async dispatch => {
   try {
-    await axios.post('/api/products', product)
+    await axios.post('/api/orders', product)
+  } catch (error) {
+    console.error(error)
+  }
+}
+
+export const deleteItems = (product, quantity) => async dispatch => {
+  try {
+    dispatch(removeItem(product, quantity))
+    for (let i = 0; i < quantity; i++) {
+      await axios.delete(`/api/orders/${product.id}`)
+    }
   } catch (error) {
     console.error(error)
   }

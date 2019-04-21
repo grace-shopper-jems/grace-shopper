@@ -11,11 +11,9 @@ class Products extends Component {
   }
 
   componentDidMount() {
-    console.log('IN products COMPONENT DID MOUNT')
     this.props.settingProducts()
   }
   handleClick(product) {
-    console.log('PRODUCT after handle click:', product)
     this.props.addToCart(product)
     this.props.addingToOrder(product)
   }

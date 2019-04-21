@@ -15,7 +15,7 @@ const middleware = composeWithDevTools(
 
 const persistedState = loadState()
 
-const store = createStore(reducer, persistedState, middleware)
+export const store = createStore(reducer, persistedState, middleware)
 
 store.subscribe(
   throttle(() => {

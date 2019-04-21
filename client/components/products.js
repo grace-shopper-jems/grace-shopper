@@ -38,7 +38,9 @@ class Products extends Component {
                     </Link>
                   </span>
                   <span className="products__text">{product.diameter}MM</span>
-                  <span className="products__price">${product.price}</span>
+                  <span className="products__price">
+                    ${(product.price / 100).toFixed(2)}
+                  </span>
 
                   <button
                     type="button"

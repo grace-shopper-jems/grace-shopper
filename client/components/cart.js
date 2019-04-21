@@ -23,6 +23,7 @@ export class Cart extends Component {
   submitOrder(currentCart) {
     this.props.completeOrder(currentCart)
   }
+
   groupCart() {
     const {cart} = this.props
     let groupedCart = []
@@ -50,31 +51,27 @@ export class Cart extends Component {
         })
       }
     }
-
-    console.log(groupedCart)
     return groupedCart
   }
+
   total(cart) {
     let total = 0
     for (let i = 0; i < cart.length; i++) {
       let itemPrice = Number(cart[i].price)
       total += itemPrice
     }
-    return total
+    return (total / 100).toFixed(2)
   }
+
   render() {
-    // console.log('THIS.PROPS.CART.CART', this.props)
     return (
       <div className="cart">
         <h3>Here are all the products in your cart: </h3>
-        {console.log('BEFORE MAP OF GROUP CART')}
         {this.groupCart().map(eachProduct => {
-          console.log('EACH PRODUCT', eachProduct)
-
           return (
             <div key={eachProduct.id}>
               <h2>Name: {eachProduct.name}</h2>
-              <h2>Price: {eachProduct.price}</h2>
+              <h2>Price: {(eachProduct.price / 100).toFixed(2)}</h2>
               <h2>Quantity: {eachProduct.quantity}</h2>
               <button
                 type="button"
@@ -104,7 +101,6 @@ export class Cart extends Component {
  * CONTAINER
  */
 const mapState = state => {
-  // console.log('STATE', state)
   return {
     cart: state.cart
   }
@@ -113,7 +109,7 @@ const mapState = state => {
 const mapDispatch = dispatch => {
   return {
     deleteFromCart: (product, quantity) =>
-    dispatch(deleteItems(product, quantity)),
+      dispatch(deleteItems(product, quantity)),
     completeOrder: currentCart => dispatch(completeOrder(currentCart))
   }
 }

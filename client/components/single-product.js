@@ -25,7 +25,7 @@ export class SingleProduct extends Component {
     return (
       <div className="singleProduct">
         <div className="back-button">
-          <Link to={'/products'} className="singleLink">
+          <Link to="/products" className="singleLink">
             <h2>return to all products page</h2>
           </Link>
         </div>
@@ -34,7 +34,7 @@ export class SingleProduct extends Component {
         <span>waterproof: {singleProduct.waterproof}</span>
         <span>material: {singleProduct.material}</span>
         <span>strap color: {singleProduct.strapColor}</span>
-        <span>price: ${singleProduct.price}</span>
+        <span>price: ${(singleProduct.price / 100).toFixed(2)}</span>
         <button type="button" onClick={() => this.handleClick(singleProduct)}>
           Add to cart
         </button>

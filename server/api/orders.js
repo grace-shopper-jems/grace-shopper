@@ -1,14 +1,16 @@
 const router = require('express').Router()
-const {Order} = require('../db/models/')
+const {Order, Product} = require('../db/models/')
 
 router.get('/', async (req, res, next) => {
   try {
     if (req.session && req.session.passport) {
-      console.log("I AM LOGGED IN!!!!!!!!!!!!!!")
-      const cartToReload = await Order.findAll({where: {
-        userId: req.session.passport.user,
-        fulfilled: false
-      }})
+      const cartToReload = await Product.findAll({
+            include: [{model: Order, where: {
+              userId: req.session.passport.user,
+              fulfilled: false
+            }}]
+      })
+      console.log("CART TO RELOAD", cartToReload)
       res.status(201).send(cartToReload)
     }
     } catch (error) {

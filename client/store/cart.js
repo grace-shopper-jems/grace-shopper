@@ -21,7 +21,7 @@ const initialState = {
  * ACTION CREATORS
  */
 
-export const getCart = products => ({type: GET_CART, products})
+export const getCart = (products) => ({type: GET_CART, products})
 export const addToCart = product => ({type: ADD_TO_CART, product})
 export const removeItem = (product, quantity) => ({
   type: REMOVE_ITEM,
@@ -39,6 +39,7 @@ export const completeOrder = currentCart => dispatch => {
     currentCart.map(async cartItem => {
       await axios.put('/api/orders', cartItem)
     })
+    localStorage.clear()
     dispatch(clearCart())
   } catch (error) {
     console.error(error)
@@ -64,10 +65,20 @@ export const deleteItems = (product, quantity) => async dispatch => {
   }
 }
 
+export const reloadCart = () => async dispatch => {
+  try {
+    const {data} = await axios.get('/api/orders')
+    console.log("THIS IS THE ORDER DATA", data)
+    dispatch(getCart(data))
+  } catch (error) {
+    console.error(error)
+  }
+}
+
 export default function(state = initialState, action) {
   switch (action.type) {
     case GET_CART:
-      return action.products
+      return {...state, cart: [action.products]}
     case ADD_TO_CART:
       state.quantity++
       console.log(initialState)

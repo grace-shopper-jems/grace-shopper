@@ -1,5 +1,6 @@
 import axios from 'axios'
 import history from '../history'
+import {clearCart, reloadCart} from './cart'
 
 /**
  * ACTION TYPES
@@ -74,6 +75,7 @@ export const login = (email, password, method) => async dispatch => {
       email,
       password
     })
+    dispatch(reloadCart())
   } catch (authError) {
     return dispatch(getUser({error: authError}))
   }
@@ -90,7 +92,9 @@ export const logout = () => async dispatch => {
   try {
     await axios.post('/auth/logout')
     dispatch(removeUser())
+    dispatch(clearCart())
     history.push('/login')
+    localStorage.clear()
   } catch (err) {
     console.error(err)
   }

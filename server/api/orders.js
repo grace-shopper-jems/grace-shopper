@@ -1,6 +1,21 @@
 const router = require('express').Router()
 const {Order} = require('../db/models/')
 
+router.get('/', async (req, res, next) => {
+  try {
+    if (req.session && req.session.passport) {
+      console.log("I AM LOGGED IN!!!!!!!!!!!!!!")
+      const cartToReload = await Order.findAll({where: {
+        userId: req.session.passport.user,
+        fulfilled: false
+      }})
+      res.status(201).send(cartToReload)
+    }
+    } catch (error) {
+    next(error)
+  }
+})
+
 router.post('/', async (req, res, next) => {
   try {
     if (req.session && req.session.passport) {

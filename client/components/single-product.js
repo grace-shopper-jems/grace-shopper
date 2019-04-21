@@ -3,10 +3,31 @@ import {connect} from 'react-redux'
 import {getSingleProduct} from '../store/products'
 import {Link} from 'react-router-dom'
 
+var stripe = Stripe('pk_test_BtVtkp5NeH03CaIuy8PkxJE900WxrX8oUQ')
+
 export class SingleProduct extends Component {
+  constructor(props) {
+    super(props)
+    this.handleClick = this.handleClick.bind(this)
+  }
+
   async componentDidMount() {
     const {id} = Number(this.props.match.params)
     await this.props.getOne(this.props.match.params.id)
+  }
+
+  handleClick() {
+    stripe
+      .redirectToCheckout({
+        sessionId:
+          '{{cs_mxqIDPPscu3mGoKbdoE6vulesoJr8Qr94jnS8ohofdRcADML9HiNDEEm8ZBT5}}'
+      })
+      .then(function(result) {
+        // If `redirectToCheckout` fails due to a browser or network
+        // error, display the localized error message to your customer
+        // using `result.error.message`.
+        result.error.message
+      })
   }
 
   render() {
@@ -23,6 +44,9 @@ export class SingleProduct extends Component {
         <span>material: {this.props.singleProduct.material}</span>
         <span>strap color: {this.props.singleProduct.strapColor}</span>
         <span>price: ${(this.props.singleProduct.price / 100).toFixed(2)}</span>
+        <button className="checkout" onClick={() => this.handleClick}>
+          checkout
+        </button>
       </div>
     )
   }

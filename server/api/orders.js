@@ -1,5 +1,21 @@
 const router = require('express').Router()
-const {Order} = require('../db/models/')
+const {Order, Product} = require('../db/models/')
+
+router.get('/', async (req, res, next) => {
+  try {
+    if (req.session && req.session.passport) {
+      const cartToReload = await Product.findAll({
+            include: [{model: Order, where: {
+              userId: req.session.passport.user,
+              fulfilled: false
+            }}]
+      })
+      res.status(201).send(cartToReload)
+    }
+    } catch (error) {
+    next(error)
+  }
+})
 
 router.post('/', async (req, res, next) => {
   try {
@@ -27,7 +43,6 @@ router.put('/', async (req, res, next) => {
     } else {
       const guestOrder = await Order.create({
         userId: null,
-
         productId: req.body.id,
         fulfilled: true
       })

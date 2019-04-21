@@ -60,7 +60,7 @@ export class Cart extends Component {
       let itemPrice = Number(cart[i].price)
       total += itemPrice
     }
-    return total
+    return (total / 100).toFixed(2)
   }
 
   render() {
@@ -71,7 +71,7 @@ export class Cart extends Component {
           return (
             <div key={eachProduct.id}>
               <h2>Name: {eachProduct.name}</h2>
-              <h2>Price: {eachProduct.price}</h2>
+              <h2>Price: {(eachProduct.price / 100).toFixed(2)}</h2>
               <h2>Quantity: {eachProduct.quantity}</h2>
               <button
                 type="button"
@@ -109,7 +109,7 @@ const mapState = state => {
 const mapDispatch = dispatch => {
   return {
     deleteFromCart: (product, quantity) =>
-    dispatch(deleteItems(product, quantity)),
+      dispatch(deleteItems(product, quantity)),
     completeOrder: currentCart => dispatch(completeOrder(currentCart))
   }
 }

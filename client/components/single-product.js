@@ -13,7 +13,7 @@ export class SingleProduct extends Component {
     return (
       <div className="singleProduct">
         <div className="back-button">
-          <Link to={'/products'} className="singleLink">
+          <Link to="/products" className="singleLink">
             <h2>return to all products page</h2>
           </Link>
         </div>
@@ -22,7 +22,7 @@ export class SingleProduct extends Component {
         <span>waterproof: {this.props.singleProduct.waterproof}</span>
         <span>material: {this.props.singleProduct.material}</span>
         <span>strap color: {this.props.singleProduct.strapColor}</span>
-        <span>price: ${this.props.singleProduct.price}</span>
+        <span>price: ${(this.props.singleProduct.price / 100).toFixed(2)}</span>
       </div>
     )
   }

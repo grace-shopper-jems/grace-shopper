@@ -71,7 +71,7 @@ async function seed() {
       waterproof: true,
       quantity: 5,
       strapColor: 'Maroon',
-      imgUrl: '/images/red-band.png'
+      imgUrl: 'images/red-band.png'
     }),
     Product.create({
       name: 'Mariner',
@@ -101,7 +101,7 @@ async function seed() {
       waterproof: true,
       quantity: 4,
       strapColor: 'Black',
-      imgUrl: '/images/simple-black.png'
+      imgUrl: 'images/simple-black.png'
     }),
     Product.create({
       name: 'Alpha',

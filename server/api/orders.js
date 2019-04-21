@@ -10,7 +10,6 @@ router.get('/', async (req, res, next) => {
               fulfilled: false
             }}]
       })
-      console.log("CART TO RELOAD", cartToReload)
       res.status(201).send(cartToReload)
     }
     } catch (error) {
@@ -44,7 +43,6 @@ router.put('/', async (req, res, next) => {
     } else {
       const guestOrder = await Order.create({
         userId: null,
-
         productId: req.body.id,
         fulfilled: true
       })

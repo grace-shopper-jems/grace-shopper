@@ -23,9 +23,9 @@ export class Cart extends Component {
   submitOrder(currentCart) {
     this.props.completeOrder(currentCart)
   }
+
   groupCart() {
     const {cart} = this.props
-    console.log("THIS IS THE CART BEFORE GROUP CART", cart)
     let groupedCart = []
     for (let i = 0; i < cart.cart.length; i++) {
       let id = cart.cart[i].id
@@ -51,10 +51,9 @@ export class Cart extends Component {
         })
       }
     }
-
-    console.log("GROUPED CART", groupedCart)
     return groupedCart
   }
+
   total(cart) {
     let total = 0
     for (let i = 0; i < cart.length; i++) {
@@ -63,14 +62,12 @@ export class Cart extends Component {
     }
     return total
   }
+
   render() {
     return (
       <div className="cart">
         <h3>Here are all the products in your cart: </h3>
-        {console.log('BEFORE MAP OF GROUP CART')}
         {this.groupCart().map(eachProduct => {
-          console.log('EACH PRODUCT', eachProduct)
-
           return (
             <div key={eachProduct.id}>
               <h2>Name: {eachProduct.name}</h2>

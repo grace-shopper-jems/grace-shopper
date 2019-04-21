@@ -26,18 +26,25 @@ export class SingleProduct extends Component {
       <div className="singleProduct">
         <div className="back-button">
           <Link to="/products" className="singleLink">
-            <h2>return to all products page</h2>
+            <h2>&larr; Go Back</h2>
           </Link>
+          <img className="single_img" src={`/${singleProduct.imgUrl}`} />
         </div>
-        <span>{singleProduct.name}</span>
-        <span>diameter: {singleProduct.diameter}</span>
-        <span>waterproof: {singleProduct.waterproof}</span>
-        <span>material: {singleProduct.material}</span>
-        <span>strap color: {singleProduct.strapColor}</span>
-        <span>price: ${(singleProduct.price / 100).toFixed(2)}</span>
-        <button type="button" onClick={() => this.handleClick(singleProduct)}>
-          Add to cart
-        </button>
+        <div className="single_info">
+          <span className="single_name">{`The ${singleProduct.name}`}</span>
+          <span>Diameter: {singleProduct.diameter}</span>
+          <span>Waterproof: {singleProduct.waterproof}</span>
+          <span>Material: {singleProduct.material}</span>
+          <span>Strap Color: {singleProduct.strapColor}</span>
+          <span>${(singleProduct.price / 100).toFixed(2)}</span>
+          <button
+            type="button"
+            className="add-to-cart"
+            onClick={() => this.handleClick(singleProduct)}
+          >
+            Add to cart
+          </button>
+        </div>
       </div>
     )
   }

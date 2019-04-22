@@ -36,11 +36,11 @@ class Routes extends Component {
         <Route exact path="/order" component={Order} />
         <Route path="/home" component={Home} />
         <Route exact path="/products/:id" component={SingleProduct} />
-        <Route exact path="/orders" component={OrderHistory} />
         {isLoggedIn && (
           <Switch>
             {/* Routes placed here are only available after logging in */}
             <Route path="/profile" component={UserHome} />
+            <Route exact path="/orders" component={OrderHistory} />
           </Switch>
         )}
         {/* Displays our Login component as a fallback */}

@@ -7,7 +7,8 @@ router.get('/all', async (req, res, next) => {
       where: {
         userId: req.session.passport.user,
         fulfilled: true
-      }
+      },
+      order: [['updatedAt', 'ASC']]
     })
     res.status(201).send(orders)
   } catch (error) {

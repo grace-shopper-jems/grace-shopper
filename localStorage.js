@@ -1,4 +1,3 @@
-
 export const loadState = () => {
   try {
     const serializedState = localStorage.getItem('state')
@@ -12,7 +11,6 @@ export const loadState = () => {
 }
 
 export const saveState = state => {
-  console.log('cart from localStorage', state)
   try {
     const serializedState = JSON.stringify(state)
     localStorage.setItem('state', serializedState)

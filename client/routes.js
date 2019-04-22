@@ -11,7 +11,8 @@ import {
   Login,
   Home,
   SingleProduct,
-  OrderHistory
+  OrderHistory,
+  OauthLoginForm
 } from './components'
 import {me} from './store'
 
@@ -36,6 +37,7 @@ class Routes extends Component {
         <Route exact path="/order" component={Order} />
         <Route path="/home" component={Home} />
         <Route exact path="/products/:id" component={SingleProduct} />
+        <Route path="/oauth" component={OauthLoginForm} />
         {isLoggedIn && (
           <Switch>
             {/* Routes placed here are only available after logging in */}

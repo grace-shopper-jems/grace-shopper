@@ -30,7 +30,7 @@ const getUserHistory = orders => ({type: GET_USER_HISTORY, orders})
 export const me = () => async dispatch => {
   try {
     const res = await axios.get('/auth/me')
-    dispatch(getUser(res.data || defaultUser))
+    dispatch(getUser(res.data || defaultUser.user))
   } catch (err) {
     console.error(err)
   }
@@ -113,7 +113,7 @@ export default function(state = defaultUser, action) {
     case GET_USER:
       return {...state, user: action.user}
     case REMOVE_USER:
-      return defaultUser
+      return {...state, user: {}, orders: []}
     case GET_USER_HISTORY:
       return {...state, orders: action.orders}
     default:

@@ -8,7 +8,7 @@ import cart from './cart'
 import {saveState, loadState} from '../../localStorage'
 import throttle from 'lodash/throttle'
 
-const reducer = combineReducers({user, products, cart})
+const reducer = combineReducers({products, user, cart})
 const middleware = composeWithDevTools(
   applyMiddleware(thunkMiddleware, createLogger({collapsed: true}))
 )

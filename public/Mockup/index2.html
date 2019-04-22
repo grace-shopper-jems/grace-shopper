@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="./styles2.css" />
+    <script
+      defer
+      src="https://use.fontawesome.com/releases/v5.8.1/js/all.js"
+      integrity="sha384-g5uSoOSBd7KkhAMlnQILrecXvzst9TdC09/VM+pjDTCM+1il8RHz5fKANTFFb+gQ"
+      crossorigin="anonymous"
+    ></script>
+    <title>JEMS Watch Company</title>
+  </head>
+  <body>
+    <div id="app">
+      <header class="nav">
+        <div class="nav__container">
+          <div class="nav__left">
+            <nav class="nav__menu">
+              <a class="nav__link" href="#">Home</a>
+              <a class="nav__link" href="#">Products</a>
+            </nav>
+          </div>
+          <div class="nav__middle">
+            <h1 class="nav__logo">Jems</h1>
+          </div>
+          <div class="nav__right">
+            <a class="nav__link toggle-sidemenu" href="#">
+              <i class="fas fa-user"></i>
+            </a>
+            <span class="nav__separator">|</span>
+            <a class="nav__link toggle-cart" href="#">
+              <i class="fas fa-shopping-bag"></i>
+              <div class="nav__counter">
+                <span class="nav__counter__text">10</span>
+              </div>
+            </a>
+          </div>
+        </div>
+      </header>
+      <div class="sidemenu">
+        <div class="sidemenu__close">
+          <h1 class="sidemenu__title">Register</h1>
+          <a href="#" class="close-sidemenu">
+            <i class="far fa-times-circle"></i>
+          </a>
+        </div>
+        <p class="sidemenu__paragraph">
+          Create a JEMS account to keep track of your orders and stay up-to-date
+          on new additions.
+        </p>
+        <div class="login">
+          <div class="login__container">
+            <form class="signup-form">
+              <input type="text" placeholder="First Name" class="input" />
+              <input type="text" placeholder="Last Name" class="input" />
+              <input type="text" placeholder="Email" class="input" />
+              <input type="password" placeholder="Password" class="input" />
+              <button class="btn">
+                CREATE ACCOUNT
+              </button>
+            </form>
+            <a href="#" class="login__link"
+              >Already registered? <span>Log in</span> here!</a
+            >
+
+            <!-- <div class="sidemenu__close">
+              <h1 class="sidemenu__title">Login</h1>
+              <a href="#" class="close-sidemenu">
+                <i class="far fa-times-circle"></i>
+              </a>
+            </div>
+            <p class="sidemenu__paragraph">
+              Log into your account below.
+            </p>
+            <form class="login-form">
+              <input type="text" placeholder="Email" class="input" />
+              <input type="password" placeholder="Password" class="input" />
+              <button class="btn">LOG IN</button>
+            </form> -->
+          </div>
+        </div>
+      </div>
+      <div class="cart">
+        <div class="sidemenu__close">
+          <h1 class="sidemenu__title">
+            Cart (<span class="cart__quantity">10</span>)
+          </h1>
+          <a href="#" class="close-cart">
+            <i class="far fa-times-circle"></i>
+          </a>
+        </div>
+        <div class="cart__item">
+          <div class="cart__item__img">
+            <img src="../images/black-band.png" />
+          </div>
+          <div class="cart__item__container">
+            <h1 class="cart__item__name">A Watch</h1>
+            <p class="cart__item__paragraph">Gold, 42mm, Black Strap</p>
+            <div class="cart__item__controls">
+              <i class="fas fa-plus-circle"></i>
+              <span class="cart__item__quantity">1</span>
+              <i class="fas fa-minus-circle"></i>
+              <span class="cart__item__x">x</span>
+              <span class="cart__item__price">$1999.99</span>
+            </div>
+          </div>
+        </div>
+        <div class="cart__item">
+          <div class="cart__item__img">
+            <img src="../images/blue-band.png" />
+          </div>
+          <div class="cart__item__container">
+            <h1 class="cart__item__name">A Watch</h1>
+            <p class="cart__item__paragraph">Gold, 42mm, Black Strap</p>
+            <div class="cart__item__controls">
+              <i class="fas fa-plus-circle"></i>
+              <span class="cart__item__quantity">1</span>
+              <i class="fas fa-minus-circle"></i>
+              <span class="cart__item__x">x</span>
+              <span class="cart__item__price">$1999.99</span>
+            </div>
+          </div>
+        </div>
+        <div class="total">
+          <span class="total__title">Subtotal</span>
+          <span class="total__price">$4000.98</span>
+          <span class="total__title">Shipping</span>
+          <span class="total__price">Free</span>
+          <span class="total__title">Tax</span>
+          <span class="total__price">$80.28</span>
+          <div class="total__cart">
+            <div class="total__group">
+              <span class="total__cart__title">Total</span>
+              <span class="total__cart__price">$4081.21</span>
+            </div>
+            <button class="cart__checkout" type="submit">Checkout</button>
+          </div>
+        </div>
+      </div>
+      <div class="products">
+        <div class="products__layout">
+          <div class="products__spacing">
+            <div class="products__item">
+              <img src="../images/black-band.png" class="products__img" />
+              <span class="products__title">
+                <h2>A Watch</h2>
+              </span>
+              <span class="products__text">42MM</span>
+              <span class="products__price">$1999.99</span>
+              <button type="button">add to cart</button>
+            </div>
+          </div>
+          <div class="products__spacing">
+            <div class="products__item">
+              <img src="../images/black-band.png" class="products__img" />
+              <span class="products__title">
+                <h2>A Watch</h2>
+              </span>
+              <span class="products__text">42MM</span>
+              <span class="products__price">$1999.99</span>
+              <button type="button">add to cart</button>
+            </div>
+          </div>
+          <div class="products__spacing">
+            <div class="products__item">
+              <img src="../images/black-band.png" class="products__img" />
+              <span class="products__title">
+                <h2>A Watch</h2>
+              </span>
+              <span class="products__text">42MM</span>
+              <span class="products__price">$1999.99</span>
+              <button type="button">add to cart</button>
+            </div>
+          </div>
+          <div class="products__spacing">
+            <div class="products__item">
+              <img src="../images/black-band.png" class="products__img" />
+              <span class="products__title">
+                <h2>A Watch</h2>
+              </span>
+              <span class="products__text">42MM</span>
+              <span class="products__price">$1999.99</span>
+              <button type="button">add to cart</button>
+            </div>
+          </div>
+          <div class="products__spacing">
+            <div class="products__item">
+              <img src="../images/black-band.png" class="products__img" />
+              <span class="products__title">
+                <h2>A Watch</h2>
+              </span>
+              <span class="products__text">42MM</span>
+              <span class="products__price">$1999.99</span>
+              <button type="button">add to cart</button>
+            </div>
+          </div>
+          <div class="products__spacing">
+            <div class="products__item">
+              <img src="../images/black-band.png" class="products__img" />
+              <span class="products__title">
+                <h2>A Watch</h2>
+              </span>
+              <span class="products__text">42MM</span>
+              <span class="products__price">$1999.99</span>
+              <button type="button">add to cart</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="footer">
+        <div class="footer__container">
+          <div class="footer__left">
+            <h1 class="footer__title">Sign up for our newsletter</h1>
+            <form>
+              <input
+                class="footer__input"
+                name="newsletterEmail"
+                type="text"
+                placeholder="Email"
+              />
+              <button class="footer__button" type="submit">Send</button>
+            </form>
+            <div class="footer__social">
+              <i class="fab fa-instagram"></i>
+              <i class="fab fa-facebook"></i>
+              <i class="fab fa-twitter"></i>
+            </div>
+          </div>
+          <div class="footer__middle">
+            <h1 class="footer__title">Jems Information</h1>
+            <p class="footer__paragraph">
+              Lorem Ipsum is simply dummy text of the printing and typesetting
+              industry. Lorem Ipsum has been the industry's standard dummy text
+              ever since the 1500s, when an unknown printer took a galley of
+              type and scrambled it to make a type specimen book. It has
+              survived not only five centuries, but also the leap into
+              electronic typesetting, remaining essentially unchanged. It was
+              popularised in the 1960s with the release of Letraset sheets
+              containing Lorem Ipsum passages, and more recently with desktop
+              publishing software like Aldus PageMaker including versions of
+              Lorem Ipsum.
+            </p>
+          </div>
+          <div class="footer__right">
+            <h1 class="footer__title">Navigate</h1>
+            <div class="footer__container">
+              <nav class="footer__menu">
+                <a class="footer__link" href="#">Home</a>
+                <a class="footer__link" href="#">Watches</a>
+              </nav>
+              <nav class="footer__menu">
+                <a class="footer__link" href="#">About Us</a>
+                <a class="footer__link" href="#">Our Team</a>
+                <a class="footer__link" href="#">FAQ</a>
+                <a class="footer__link" href="#">Jobs</a>
+                <a class="footer__link" href="#">Contact</a>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <p>
+          <span class="footer__bottom__copyright">&copy;</span> JEMS Watch
+          Company. All Rights Reserved.
+        </p>
+      </div>
+    </div>
+    <script>
+      ;(function() {
+        let sidemenu = document.querySelector('.sidemenu')
+        let cart = document.querySelector('.cart')
+        document.querySelector('.toggle-sidemenu').onclick = function() {
+          sidemenu.classList.toggle('is-visible', true)
+        }
+        document.querySelector('.close-sidemenu').onclick = function() {
+          sidemenu.classList.toggle('is-visible', false)
+        }
+        document.querySelector('.toggle-cart').onclick = function() {
+          cart.classList.toggle('is-visible', true)
+        }
+        document.querySelector('.close-cart').onclick = function() {
+          cart.classList.toggle('is-visible', false)
+        }
+      })()
+    </script>
+  </body>
+</html>

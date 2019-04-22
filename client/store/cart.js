@@ -1,5 +1,5 @@
 import axios from 'axios'
-
+import store from './index'
 /**
  * ACTION TYPES
  */
@@ -60,6 +60,10 @@ export const deleteItems = (product, quantity) => async dispatch => {
 
 export const reloadCart = () => async dispatch => {
   try {
+    store.getState().cart.cart.map((eachProduct) => {
+      dispatch(addToOrder(eachProduct))
+    })
+    dispatch(clearCart())
     const {data} = await axios.get('/api/orders')
     data.map((eachProduct) => {
       for (let i = 0; i < eachProduct.orders.length; i++) {

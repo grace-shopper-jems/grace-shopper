@@ -68,7 +68,8 @@ a {
 .products,
 .cart,
 .order,
-.userHome {
+.userHome,
+.orderHistory {
   height: 100%;
   padding: 90px 10px 10px 10px;
 }
@@ -139,6 +140,54 @@ a {
 }
 .singleLink {
   color: black;
+  width: 90px;
+}
+
+.singleLink:hover {
+  color: purple;
+  text-shadow: 1px 1px 1px rgba(128, 128, 128, 0.274);
+}
+
+.singleProduct {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.single_img {
+  width: 250px;
+  height: 400px;
+}
+
+.back-button {
+  display: flex;
+  flex-direction: column;
+}
+
+.single_info {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  align-items: center;
+}
+
+.single_info span {
+  margin: 15px;
+}
+
+.single_info button {
+  border: 1px solid grey;
+  border-radius: 15px;
+  height: 60px;
+  font-size: 15px;
+}
+
+.single_info button:hover {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.single_name {
+  font-size: 2.5rem;
 }
 
 /* body {

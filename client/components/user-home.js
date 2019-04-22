@@ -12,7 +12,9 @@ export const UserHome = props => {
   return (
     <div className="userHome">
       <h3>Welcome, {email}</h3>
-      <Link to="/orders">Order History</Link>
+      <Link to="/orders" className="singleLink">
+        Order History
+      </Link>
     </div>
   )
 }

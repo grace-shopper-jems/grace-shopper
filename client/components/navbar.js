@@ -73,10 +73,11 @@ const Navbar = ({handleClick, isLoggedIn, cart, user}) => (
  * CONTAINER
  */
 const mapState = state => {
+  console.log('state in navbar', state)
   return {
-    isLoggedIn: !!state.user.id,
+    isLoggedIn: !!state.user.user.id,
     cart: state.cart.quantity,
-    user: state.user
+    user: state.user.user
   }
 }
 

@@ -16,7 +16,7 @@ describe('Product routes', () => {
     beforeEach(() => {
       return Product.create({
         name: 'Generic A',
-        price: 2299.99,
+        price: 229999,
         diameter: 40,
         material: 'Stainless Steel',
         waterproof: true,

@@ -15,7 +15,7 @@ class OrderHistory extends Component {
       <div className="orderHistory">
         <h2>These are your orders:</h2>
         {this.props.orders.map(order => {
-          return <h2 key={order.id}>{order.createdAt} </h2>
+          return <h2 key={order.id}>{order.updatedAt} </h2>
         })}
       </div>
     )

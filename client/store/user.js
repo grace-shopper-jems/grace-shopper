@@ -12,14 +12,17 @@ const GET_USER_HISTORY = 'GET_USER_HISTORY'
 /**
  * INITIAL STATE
  */
-const defaultUser = {}
+const defaultUser = {
+  user: {},
+  orders: []
+}
 
 /**
  * ACTION CREATORS
  */
 const getUser = user => ({type: GET_USER, user})
 const removeUser = () => ({type: REMOVE_USER})
-const getUserHistory = id => ({type: GET_USER_HISTORY, id})
+const getUserHistory = orders => ({type: GET_USER_HISTORY, orders})
 
 /**
  * THUNK CREATORS
@@ -35,7 +38,9 @@ export const me = () => async dispatch => {
 
 export const getOrderHistoryThunk = () => async dispatch => {
   try {
-    const orders = await axios.get('/')
+    const res = await axios.get('/api/orders/all')
+    console.log('res in get orders history thunk', res)
+    dispatch(getUserHistory(res.data))
   } catch (error) {
     console.error(error)
   }
@@ -106,9 +111,11 @@ export const logout = () => async dispatch => {
 export default function(state = defaultUser, action) {
   switch (action.type) {
     case GET_USER:
-      return action.user
+      return {...state, user: action.user}
     case REMOVE_USER:
       return defaultUser
+    case GET_USER_HISTORY:
+      return {...state, orders: action.orders}
     default:
       return state
   }

@@ -8,7 +8,6 @@ import OauthLoginForm from './oauth-login-form'
  */
 const AuthForm = props => {
   const {name, displayName, handleSubmit, error} = props
-  console.log(name)
   return (
     <div className="login">
       <div className="login__container">

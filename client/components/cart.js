@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 import {deleteItems, completeOrder} from '../store/cart'
 import {Link} from 'react-router-dom'
+import Checkout from './payment'
 /**
  * COMPONENT
  */
@@ -86,12 +87,10 @@ export class Cart extends Component {
         })}
         <h1>Sub-Total: {this.total(this.props.cart.cart)}</h1>
 
-        <Link
-          to="/order"
-          onClick={() => this.submitOrder(this.props.cart.cart)}
-        >
-          <button type="button">Order</button>
-        </Link>
+        <Checkout
+          cart={this.props.cart.cart}
+          total={this.total(this.props.cart.cart)}
+        />
       </div>
     )
   }

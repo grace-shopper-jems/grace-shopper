@@ -11,9 +11,9 @@ export class SingleProduct extends Component {
     this.handleClick = this.handleClick.bind(this)
   }
 
-  async componentDidMount() {
-    const {id} = Number(this.props.match.params)
-    await this.props.getOne(this.props.match.params.id)
+  componentDidMount() {
+    const {id} = this.props.match.params
+    this.props.getOne(id)
   }
 
   handleClick() {

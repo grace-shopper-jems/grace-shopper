@@ -1,37 +1,31 @@
-const router = require('express').Router()
+const stripe = require('../constants/stripe')
+// const configureStripe = require('stripe')
 
-var stripe = require('stripe')('sk_test_dNwYshLs50W7TZ6e9cJEIUZd00ehYRZwRx')
+// const STRIPE_SECRET_KEY = process.env.STRIPE_SECRET_KEY
 
-router.post('/sessions', async (req, res, next) => {
-  await stripe.checkout.sessions.create(
-    {
-      success_url: 'localhost:8080/order',
-      cancel_url: 'localhost:8080/cart',
-      payment_method_types: ['card'],
-      line_items: [
-        {
-          name: 'T-shirt',
-          description: 'Comfortable cotton t-shirt',
-          amount: 1500,
-          currency: 'usd',
-          quantity: 2
-        }
-      ]
-    },
-    function(err, session) {
-      err.message
-    }
-  )
-})
+// const stripe = configureStripe(STRIPE_SECRET_KEY)
 
-router.get('/sessions/:id', async (req, res, next) => {
-  await stripe.checkout.sessions.retrieve(
-    'cs_mxqIDPPscu3mGoKbdoE6vulesoJr8Qr94jnS8ohofdRcADML9HiNDEEm8ZBT5',
-    function(err, session) {
-      err.message
-      // asynchronously called
-    }
-  )
-})
+const postStripeCharge = res => (stripeErr, stripeRes) => {
+  if (stripeErr) {
+    res.status(500).send({error: stripeErr})
+  } else {
+    res.status(200).send({success: stripeRes})
+  }
+}
 
-module.exports = router
+const paymentApi = app => {
+  app.get('/', (req, res) => {
+    res.send({
+      message: 'Hello Stripe checkout server!',
+      timestamp: new Date().toISOString()
+    })
+  })
+
+  app.post('/', (req, res) => {
+    stripe.charges.create(req.body, postStripeCharge(res))
+  })
+
+  return app
+}
+
+module.exports = paymentApi

@@ -15,6 +15,7 @@ module.exports = app
 
 // This is a global Mocha hook, used for resource cleanup.
 // Otherwise, Mocha v4+ never quits after tests.
+
 if (process.env.NODE_ENV === 'test') {
   after('close the session store', () => sessionStore.stopExpiringSessions())
 }
@@ -28,6 +29,14 @@ if (process.env.NODE_ENV === 'test') {
  * Node process on process.env
  */
 if (process.env.NODE_ENV !== 'production') require('../secrets')
+
+const paymentApi = require('./api/checkout')
+
+const configureRoutes = app => {
+  paymentApi(app)
+}
+
+module.exports = configureRoutes
 
 // passport registration
 passport.serializeUser((user, done) => done(null, user.id))

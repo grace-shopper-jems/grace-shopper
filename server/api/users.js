@@ -58,7 +58,6 @@ router.put('/:userId', async (req, res, next) => {
       },
       {returning: true, where: {id: req.params.userId}}
     )
-    //console.log(rowsUpdated)
     res.send(userUpdate[0])
   } catch (err) {
     next(err)

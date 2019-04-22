@@ -2,7 +2,7 @@ import React from 'react'
 import {connect} from 'react-redux'
 import PropTypes from 'prop-types'
 import {auth, login} from '../store'
-
+import OauthLoginForm from './oauth-login-form'
 /**
  * COMPONENT
  */
@@ -47,6 +47,7 @@ const AuthForm = props => {
             {displayName}
           </button>
         </form>
+        <OauthLoginForm />
       </div>
     </div>
     // <div>

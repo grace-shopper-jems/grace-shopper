@@ -1,18 +1,37 @@
 const router = require('express').Router()
 const {Order, Product} = require('../db/models/')
 
+router.get('/all', async (req, res, next) => {
+  try {
+    const orders = await Order.findAll({
+      where: {
+        userId: req.session.passport.user,
+        fulfilled: true
+      }
+    })
+    res.status(201).send(orders)
+  } catch (error) {
+    next(error)
+  }
+})
+
 router.get('/', async (req, res, next) => {
   try {
     if (req.session && req.session.passport) {
       const cartToReload = await Product.findAll({
-            include: [{model: Order, where: {
+        include: [
+          {
+            model: Order,
+            where: {
               userId: req.session.passport.user,
               fulfilled: false
-            }}]
+            }
+          }
+        ]
       })
       res.status(201).send(cartToReload)
     }
-    } catch (error) {
+  } catch (error) {
     next(error)
   }
 })
@@ -57,14 +76,14 @@ router.delete('/:productId', async (req, res, next) => {
   try {
     const productId = req.params.productId
     if (req.session && req.session.passport) {
-      await Order.destroy(
-        {where:
-          {userId: req.session.passport.user,
+      await Order.destroy({
+        where: {
+          userId: req.session.passport.user,
           fulfilled: false,
-          productId: productId}
+          productId: productId
         }
-      )
-      res.status(202).send("item deleted from cart")
+      })
+      res.status(202).send('item deleted from cart')
     }
   } catch (error) {
     next(error)

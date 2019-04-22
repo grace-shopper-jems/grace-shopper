@@ -69,7 +69,8 @@ a {
 .cart,
 .order,
 .userHome,
-.orderHistory {
+.orderHistory,
+.oauth {
   height: 100%;
   padding: 90px 10px 10px 10px;
 }

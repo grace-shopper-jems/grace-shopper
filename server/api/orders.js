@@ -8,6 +8,7 @@ router.get('/all', async (req, res, next) => {
         userId: req.session.passport.user,
         fulfilled: true
       },
+      include: [{model: Product}],
       order: [['updatedAt', 'DESC']]
     })
     res.status(201).send(orders)

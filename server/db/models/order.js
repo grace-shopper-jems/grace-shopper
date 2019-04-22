@@ -6,6 +6,9 @@ const Order = db.define('order', {
     type: Sequelize.BOOLEAN,
     defaultValue: false,
     allowNull: false
+  },
+  createdAt: {
+    type: Sequelize.DATEONLY
   }
 })
 

@@ -18,7 +18,6 @@ const errorPayment = data => {
 class Checkout extends React.Component {
   onToken = () => token => {
     this.props.completeOrder(this.props.cart)
-    // paymentApi()
     axios
       .post(PAYMENT_SERVER_URL, {
         source: token.id,
@@ -27,11 +26,6 @@ class Checkout extends React.Component {
       })
       .then(successPayment)
       .catch(errorPayment)
-    // TODO: Send the token information and any other
-    // relevant information to your payment process
-    // server, wait for the response, and update the UI
-    // accordingly. How this is done is up to you. Using
-    // XHR, fetch, or a GraphQL mutation is typical.
   }
 
   render() {

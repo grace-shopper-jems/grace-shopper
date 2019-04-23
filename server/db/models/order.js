@@ -4,8 +4,7 @@ const db = require('../db')
 const Order = db.define('order', {
   fulfilled: {
     type: Sequelize.BOOLEAN,
-    defaultValue: false,
-    allowNull: false
+    defaultValue: false
   },
   createdAt: {
     type: Sequelize.DATEONLY

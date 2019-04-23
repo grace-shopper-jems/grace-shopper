@@ -24,9 +24,6 @@ export class SingleProduct extends Component {
           '{{cs_mxqIDPPscu3mGoKbdoE6vulesoJr8Qr94jnS8ohofdRcADML9HiNDEEm8ZBT5}}'
       })
       .then(function(result) {
-        // If `redirectToCheckout` fails due to a browser or network
-        // error, display the localized error message to your customer
-        // using `result.error.message`.
         result.error.message
       })
   }

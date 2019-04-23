@@ -1,79 +1,88 @@
-import React from 'react'
+import React, {Component} from 'react'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
-import {Link} from 'react-router-dom'
+import {NavLink} from 'react-router-dom'
 import {logout} from '../store'
 
-const Navbar = ({handleClick, isLoggedIn, cart, user}) => (
-  <header className="navbar">
-    <nav className="navbar__menu">
-      <Link to="/home" className="navbar__link">
-        HOME
-      </Link>
-      <Link to="/products" className="navbar__link">
-        WATCHES
-      </Link>
-    </nav>
-    <div className="navbar__logo">
-      <h1>Jems</h1>
-    </div>
-    <div className="navbar__login">
-      <div className="navbar__position">
-        {isLoggedIn ? (
-          <div>
-            <Link to="/profile">Welcome {user.firstName}</Link>
-            <a href="#" onClick={handleClick}>
-              LOG OUT
+class Navbar extends Component {
+  componentDidMount() {
+    ;(function() {
+      let sidemenu = document.querySelector('.sidemenu')
+      let cart = document.querySelector('.cart')
+      document.querySelector('.toggle-sidemenu').onclick = function() {
+        sidemenu.classList.toggle('is-visible', true)
+      }
+      document.querySelector('.close-sidemenu').onclick = function() {
+        sidemenu.classList.toggle('is-visible', false)
+      }
+      document.querySelector('.toggle-cart').onclick = function() {
+        cart.classList.toggle('is-visible', true)
+      }
+      document.querySelector('.close-cart').onclick = function() {
+        cart.classList.toggle('is-visible', false)
+      }
+      document.querySelector('.cart__checkout').onclick = function() {
+        cart.classList.toggle('is-visible', false)
+      }
+      document.querySelector('.btn').onclick = function() {
+        sidemenu.classList.toggle('is-visible', false)
+      }
+    })()
+  }
+
+  render() {
+    return (
+      <header className="nav">
+        <div className="nav__container">
+          <div className="nav__left">
+            <nav className="nav__menu">
+              <NavLink
+                to="/home"
+                className="nav__link"
+                activeClassName="selected"
+              >
+                HOME
+              </NavLink>
+              <NavLink
+                to="/products"
+                className="nav__link"
+                activeClassName="selected"
+              >
+                WATCHES
+              </NavLink>
+            </nav>
+          </div>
+          <div className="nav__middle">
+            <h1 className="nav__logo">Jems</h1>
+          </div>
+          <div className="nav__right">
+            {this.props.isLoggedIn ? (
+              <a className="nav__link" onClick={this.props.handleClick}>
+                <i className="far fa-user" />
+              </a>
+            ) : (
+              <a className="nav__link toggle-sidemenu">
+                <i className="fas fa-user" />
+              </a>
+            )}
+            <span className="nav__separator">|</span>
+            <a className="nav__link toggle-cart">
+              <i className="fas fa-shopping-bag" />
+              <div className="nav__counter">
+                <span className="nav__counter__text">{this.props.cart}</span>
+              </div>
             </a>
           </div>
-        ) : (
-          <div>
-            <Link to="/signup">REGISTER</Link>
-            <Link to="/login">LOG IN</Link>
-          </div>
-        )}
-        <span>|</span>
-        <Link to="/cart">Cart</Link>
-        <span>{cart}</span>
-      </div>
-    </div>
-  </header>
-
-  // <div>
-  //   <h1>BOILERMAKER</h1>
-  //   <nav>
-  //     {isLoggedIn ? (
-  //       <div>
-  //         {/* The navbar will show these links after you log in */}
-  //         <Link to="/home">Home</Link>
-  //         <Link to="/products">Products</Link>
-  //         <Link to="/cart">Cart</Link>
-  //         <a href="#" onClick={handleClick}>
-  //           Logout
-  //         </a>
-  //       </div>
-  //     ) : (
-  //       <div>
-  //         {/* The navbar will show these links before you log in */}
-  //         <Link to="/login">Login</Link>
-  //         <Link to="/signup">Sign Up</Link>
-  //         <Link to="/products">Products</Link>
-  //         <Link to="/cart">Cart</Link>
-  //         {/* <IconButton aria-label="Shopping Cart">
-  //             <AddShoppingCartIcon />
-  //           </IconButton> */}
-  //       </div>
-  //     )}
-  //   </nav>
-  //   <hr />
-  // </div>
-)
+        </div>
+      </header>
+    )
+  }
+}
 
 /**
  * CONTAINER
  */
 const mapState = state => {
-  console.log('state in navbar', state)
   return {
     isLoggedIn: !!state.user.user.id,
     cart: state.cart.quantity,
@@ -83,9 +92,7 @@ const mapState = state => {
 
 const mapDispatch = dispatch => {
   return {
-    handleClick() {
-      dispatch(logout())
-    }
+    handleClick: () => dispatch(logout())
   }
 }
 
@@ -94,8 +101,8 @@ export default connect(mapState, mapDispatch)(Navbar)
 /**
  * PROP TYPES
  */
-Navbar.propTypes = {
-  handleClick: PropTypes.func.isRequired,
-  isLoggedIn: PropTypes.bool.isRequired
-  // cart: PropTypes.number.isRequired
-}
+// Navbar.propTypes = {
+//   handleClick: PropTypes.func.isRequired,
+//   isLoggedIn: PropTypes.bool.isRequired
+//   // cart: PropTypes.number.isRequired
+// }

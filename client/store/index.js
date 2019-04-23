@@ -5,10 +5,11 @@ import {composeWithDevTools} from 'redux-devtools-extension'
 import user from './user'
 import products from './products'
 import cart from './cart'
+import newsletter from './newsletter'
 import {saveState, loadState} from '../../localStorage'
 import throttle from 'lodash/throttle'
 
-const reducer = combineReducers({products, user, cart})
+const reducer = combineReducers({user, products, cart, newsletter})
 const middleware = composeWithDevTools(
   applyMiddleware(thunkMiddleware, createLogger({collapsed: true}))
 )

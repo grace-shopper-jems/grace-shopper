@@ -14,7 +14,7 @@ class UpdateUser extends Component {
       cityShip: '',
       stateShip: '',
       zipShip: '',
-      //   streetAddressBill: '',
+      streetAddressBill: '',
       cityBill: '',
       stateBill: '',
       zipBill: ''

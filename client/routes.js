@@ -13,7 +13,8 @@ import {
   SingleProduct,
   Checkout,
   OrderHistory,
-  UpdateUser
+  UpdateUser,
+  Admin
 } from './components'
 import {me} from './store'
 
@@ -44,6 +45,7 @@ class Routes extends Component {
           <Switch>
             <Route path="/profile" component={UserHome} />
             <Route exact path="/orders" component={OrderHistory} />
+            <Route path="/admin" component={Admin} />
           </Switch>
         )}
         <Route component={Home} />

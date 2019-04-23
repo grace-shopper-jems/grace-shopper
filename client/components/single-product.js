@@ -4,8 +4,6 @@ import {getSingleProduct} from '../store/products'
 import {addToOrder, addToCart} from '../store/cart'
 import {Link} from 'react-router-dom'
 
-var stripe = Stripe('pk_test_BtVtkp5NeH03CaIuy8PkxJE900WxrX8oUQ')
-
 export class SingleProduct extends Component {
   constructor(props) {
     super(props)
@@ -17,18 +15,9 @@ export class SingleProduct extends Component {
     this.props.getOne(id)
   }
 
-  handleClick() {
-    stripe
-      .redirectToCheckout({
-        sessionId:
-          '{{cs_mxqIDPPscu3mGoKbdoE6vulesoJr8Qr94jnS8ohofdRcADML9HiNDEEm8ZBT5}}'
-      })
-      .then(function(result) {
-        // If `redirectToCheckout` fails due to a browser or network
-        // error, display the localized error message to your customer
-        // using `result.error.message`.
-        result.error.message
-      })
+  handleClick(singleProduct) {
+    this.props.addToCart(singleProduct)
+    this.props.addingToOrder(singleProduct)
   }
 
   render() {
@@ -56,15 +45,6 @@ export class SingleProduct extends Component {
             Add to cart
           </button>
         </div>
-        <span>{this.props.singleProduct.name}</span>
-        <span>diameter: {this.props.singleProduct.diameter}</span>
-        <span>waterproof: {this.props.singleProduct.waterproof}</span>
-        <span>material: {this.props.singleProduct.material}</span>
-        <span>strap color: {this.props.singleProduct.strapColor}</span>
-        <span>price: ${(this.props.singleProduct.price / 100).toFixed(2)}</span>
-        <button className="checkout" onClick={() => this.handleClick}>
-          checkout
-        </button>
       </div>
     )
   }

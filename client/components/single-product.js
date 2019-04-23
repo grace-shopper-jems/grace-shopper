@@ -4,8 +4,6 @@ import {getSingleProduct} from '../store/products'
 import {addToOrder, addToCart} from '../store/cart'
 import {Link} from 'react-router-dom'
 
-// var stripe = Stripe('pk_test_BtVtkp5NeH03CaIuy8PkxJE900WxrX8oUQ')
-
 export class SingleProduct extends Component {
   constructor(props) {
     super(props)

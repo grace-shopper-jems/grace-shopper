@@ -1,4 +1,4 @@
-/* global describe beforeEach it */
+// /* global describe beforeEach it */
 
 const {expect} = require('chai')
 const request = require('supertest')
@@ -6,7 +6,7 @@ const db = require('../db')
 const app = require('../index')
 const User = db.model('user')
 
-xdescribe('User routes', () => {
+describe('User routes', () => {
   beforeEach(() => {
     return db.sync({force: true})
   })
@@ -22,7 +22,7 @@ xdescribe('User routes', () => {
       })
     })
 
-    it('GET /api/users', async () => {
+    xit('GET /api/users', async () => {
       const res = await request(app)
         .get('/api/users')
         .expect(302)

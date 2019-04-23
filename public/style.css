@@ -63,6 +63,7 @@ a {
   height: 100%;
   background-color: red;
 }
+.admin,
 .checkout,
 .singleProduct,
 .products,
@@ -189,6 +190,17 @@ a {
 
 .single_name {
   font-size: 2.5rem;
+}
+
+.admin {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.admin_product_list {
+  display: flex;
+  flex-direction: column;
 }
 
 /* body {

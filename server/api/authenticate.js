@@ -5,9 +5,11 @@ const isAuthenticated = async (req, res, next) => {
     const user = await User.findByPk(req.session.passport.user)
     if (user.dataValues.isAdmin) {
       return next()
+    } else {
+      res.redirect('/home');
     }
-  } catch (error) {
-    res.redirect('/');
+  } catch (e) {
+    res.redirect('/home');
   }
 }
 

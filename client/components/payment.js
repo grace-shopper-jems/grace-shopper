@@ -10,7 +10,6 @@ import PAYMENT_SERVER_URL from '../../server/constants/server'
 
 const successPayment = () => {
   alert('Payment Successful!')
-
 }
 
 const errorPayment = () => {
@@ -18,7 +17,6 @@ const errorPayment = () => {
 }
 
 class Checkout extends React.Component {
-
   onToken = () => token => {
     this.props.completeOrder(this.props.cart)
     axios
@@ -31,12 +29,11 @@ class Checkout extends React.Component {
       .catch(errorPayment)
   }
 
-
   render() {
     return (
-      <div className="checkout">
+      <div className="checkout cart__checkout">
         <StripeCheckout
-          amount={Number(this.props.total*100)}
+          amount={Number(this.props.total * 100)}
           billingAddress
           description="enter 4242 4242 4242 4242 to test"
           name="Timeless"

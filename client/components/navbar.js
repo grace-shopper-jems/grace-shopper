@@ -24,9 +24,9 @@ class Navbar extends Component {
       document.querySelector('.cart__checkout').onclick = function() {
         cart.classList.toggle('is-visible', false)
       }
-      document.querySelector('.btn').onclick = function() {
-        sidemenu.classList.toggle('is-visible', false)
-      }
+      // document.querySelector('.btn').onclick = function() {
+      //   sidemenu.classList.toggle('is-visible', false)
+      // }
     })()
   }
 
@@ -50,6 +50,17 @@ class Navbar extends Component {
               >
                 WATCHES
               </NavLink>
+              {this.props.user.id ? (
+                <NavLink
+                  to="/profile"
+                  className="nav__link"
+                  activeClassName="selected"
+                >
+                  PROFILE
+                </NavLink>
+              ) : (
+                ''
+              )}
             </nav>
           </div>
           <div className="nav__middle">
@@ -101,8 +112,8 @@ export default connect(mapState, mapDispatch)(Navbar)
 /**
  * PROP TYPES
  */
-// Navbar.propTypes = {
-//   handleClick: PropTypes.func.isRequired,
-//   isLoggedIn: PropTypes.bool.isRequired
-//   // cart: PropTypes.number.isRequired
-// }
+Navbar.propTypes = {
+  handleClick: PropTypes.func.isRequired,
+  isLoggedIn: PropTypes.bool.isRequired,
+  cart: PropTypes.number.isRequired
+}

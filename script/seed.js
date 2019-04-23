@@ -44,76 +44,84 @@ async function seed() {
 
   const products = await Promise.all([
     Product.create({
-      name: 'Generic A',
-      price: 2299.99,
+      name: 'Sailor',
+      price: 2299999,
       diameter: 40,
-      material: 'Stainless Steel',
+      material: 'Solid Gold',
       waterproof: true,
       quantity: 20,
-      strapColor: 'Black'
+      strapColor: 'Gold',
+      imgUrl: 'images/gold-band.png'
     }),
     Product.create({
-      name: 'Generic A',
-      price: 2299.99,
+      name: 'Fireman',
+      price: 2299999,
       diameter: 42,
       material: 'Stainless Steel',
       waterproof: true,
       quantity: 25,
-      strapColor: 'Black'
+      strapColor: 'Silver',
+      imgUrl: 'images/silver-band.png'
     }),
     Product.create({
-      name: 'Generic B',
-      price: 12999.99,
+      name: 'Officer',
+      price: 12299999,
       diameter: 40,
-      material: 'Yellow Gold',
+      material: 'Solid Gold',
       waterproof: true,
       quantity: 5,
-      strapColor: 'Brown'
+      strapColor: 'Maroon',
+      imgUrl: 'images/red-band.png'
     }),
     Product.create({
-      name: 'Generic B',
-      price: 12999.99,
+      name: 'Mariner',
+      price: 1599999,
       diameter: 42,
-      material: 'Yellow Gold',
+      material: 'Stainless Steel',
       waterproof: true,
       quantity: 6,
-      strapColor: 'Brown'
+      strapColor: 'Blue',
+      imgUrl: 'images/blue-band.png'
     }),
     Product.create({
-      name: 'Generic C',
-      price: 15999.99,
+      name: 'Chrome',
+      price: 1299999,
       diameter: 40,
       material: 'White Gold',
       waterproof: true,
       quantity: 3,
-      strapColor: 'Black'
+      strapColor: 'Black',
+      imgUrl: 'images/black-band.png'
     }),
     Product.create({
-      name: 'Generic C',
-      price: 15999.99,
+      name: 'General',
+      price: 1599999,
       diameter: 42,
       material: 'White Gold',
       waterproof: true,
       quantity: 4,
-      strapColor: 'Black'
+      strapColor: 'Black',
+      imgUrl: 'images/simple-black.png'
     }),
     Product.create({
-      name: 'Generic D',
-      price: 57999.99,
+      name: 'Alpha',
+      price: 1599999,
       diameter: 40,
       material: 'Platinum',
       waterproof: true,
       quantity: 2,
-      strapColor: 'Black'
+      strapColor: 'Red',
+      imgUrl: 'images/simple-red.png'
     }),
     Product.create({
-      name: 'Generic D',
-      price: 57999.99,
+      name: 'Deluxe',
+      price: 9999999,
       diameter: 40,
       material: 'Platinum',
       waterproof: true,
       quantity: 3,
-      strapColor: 'Black'
+      strapColor: 'Black',
+      imgUrl: 'images/self-winding.png'
     })
   ])
 

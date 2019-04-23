@@ -7,7 +7,7 @@ const Product = db.define('product', {
     allowNull: false
   },
   price: {
-    type: Sequelize.DECIMAL(10, 2),
+    type: Sequelize.INTEGER,
     allowNull: false
   },
   diameter: {
@@ -29,6 +29,10 @@ const Product = db.define('product', {
   strapColor: {
     type: Sequelize.STRING,
     allowNull: false
+  },
+  imgUrl: {
+    type: Sequelize.STRING,
+    defaultValue: ''
   }
 })
 

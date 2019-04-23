@@ -1,20 +1,20 @@
 export const loadState = () => {
   try {
-    const serializedState = localStorage.getItem('cart')
+    const serializedState = localStorage.getItem('state')
     if (serializedState === null) {
-      return undefined
+      return undefined // the reason we need this is because there are options like privacy mode that do not allow the use of local storage. If that is the case this will return undefined and the reducers will take over and initialize the state
     }
     return JSON.parse(serializedState)
-  } catch (err) {
-    return undefined
+  } catch (error) {
+    return undefined // if any errors let the reducers set the state
   }
 }
 
-export const saveState = cart => {
+export const saveState = state => {
   try {
-    const serializedState = JSON.stringify(cart)
-    localStorage.setItem('cart', serializedState)
-  } catch {
-    // ignore write errors
+    const serializedState = JSON.stringify(state)
+    localStorage.setItem('state', serializedState)
+  } catch (error) {
+    console.error(error)
   }
 }

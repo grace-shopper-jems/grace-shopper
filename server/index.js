@@ -15,6 +15,7 @@ module.exports = app
 
 // This is a global Mocha hook, used for resource cleanup.
 // Otherwise, Mocha v4+ never quits after tests.
+
 if (process.env.NODE_ENV === 'test') {
   after('close the session store', () => sessionStore.stopExpiringSessions())
 }
@@ -29,15 +30,21 @@ if (process.env.NODE_ENV === 'test') {
  */
 if (process.env.NODE_ENV !== 'production') require('../secrets')
 
+const paymentApi = require('./api/checkout')
+
+const configureRoutes = app => {
+  paymentApi(app)
+}
+
+module.exports = configureRoutes
+
 // passport registration
 passport.serializeUser((user, done) => done(null, user.id))
 
 passport.deserializeUser(async (id, done) => {
   try {
-    console.log('ID:', id)
     // const user = await db.models.user.findById(id)
     const user = await User.findByPk(id)
-    console.log('USER', user)
     done(null, user)
   } catch (err) {
     done(err)
@@ -103,7 +110,6 @@ const startListening = () => {
   const server = app.listen(PORT, () =>
     console.log(`Mixing it up on port ${PORT}`)
   )
-
   // set up our socket control center
   const io = socketio(server)
   require('./socket')(io)

@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {setProducts} from '../store/products'
 import {addToOrder, addToCart} from '../store/cart'
+import {Link} from 'react-router-dom'
 
 class Products extends Component {
   constructor(props) {
@@ -10,11 +11,9 @@ class Products extends Component {
   }
 
   componentDidMount() {
-    console.log('IN products COMPONENT DID MOUNT')
     this.props.settingProducts()
   }
   handleClick(product) {
-    console.log('PRODUCT after handle click:', product)
     this.props.addToCart(product)
     this.props.addingToOrder(product)
   }
@@ -26,13 +25,21 @@ class Products extends Component {
             return (
               <div key={product.id} className="products__spacing">
                 <div className="products__item">
-                  <img
-                    src="petit-melrose-white.jpeg"
-                    className="products__img"
-                  />
-                  <span className="products__title">{product.name}</span>
+                  <img src={product.imgUrl} className="products__img" />
+                  <span className="products__title">
+                    <Link
+                      to={'/products/' + product.id}
+                      key={product.id}
+                      className="singleLink"
+                    >
+                      <h2>{product.name}</h2>
+                    </Link>
+                  </span>
                   <span className="products__text">{product.diameter}MM</span>
-                  <span className="products__price">${product.price}</span>
+                  <span className="products__price">
+                    ${(product.price / 100).toFixed(2)}
+                  </span>
+
                   <button
                     type="button"
                     onClick={() => this.handleClick(product)}

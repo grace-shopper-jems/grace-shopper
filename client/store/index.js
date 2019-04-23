@@ -8,14 +8,14 @@ import cart from './cart'
 import {saveState, loadState} from '../../localStorage'
 import throttle from 'lodash/throttle'
 
-const reducer = combineReducers({user, products, cart})
+const reducer = combineReducers({products, user, cart})
 const middleware = composeWithDevTools(
   applyMiddleware(thunkMiddleware, createLogger({collapsed: true}))
 )
 
 const persistedState = loadState()
 
-const store = createStore(reducer, persistedState, middleware)
+export const store = createStore(reducer, persistedState, middleware)
 
 store.subscribe(
   throttle(() => {
@@ -24,6 +24,8 @@ store.subscribe(
     })
   }, 1000)
 )
+// because stringify is such an expensive operation we are making sure that we are not constantly updating, but rather only every second.
+// listening to any state changes
 
 export default store
 export * from './user'

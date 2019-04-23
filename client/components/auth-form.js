@@ -2,13 +2,12 @@ import React from 'react'
 import {connect} from 'react-redux'
 import PropTypes from 'prop-types'
 import {auth, login} from '../store'
-
+import OauthLoginForm from './oauth-login-form'
 /**
  * COMPONENT
  */
 const AuthForm = props => {
   const {name, displayName, handleSubmit, error} = props
-  console.log(name)
   return (
     <div className="login">
       <div className="login__container">
@@ -47,6 +46,7 @@ const AuthForm = props => {
             {displayName}
           </button>
         </form>
+        <OauthLoginForm />
       </div>
     </div>
     // <div>

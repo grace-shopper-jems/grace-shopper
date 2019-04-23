@@ -1,5 +1,6 @@
 const router = require('express').Router()
 const {Product} = require('../db/models/')
+const {isAdmin} = require('./authenticate')
 
 router.get('/', async (req, res, next) => {
   try {
@@ -19,7 +20,7 @@ router.get('/:id', async (req, res, next) => {
   }
 })
 
-router.put('/:id', async (req, res, next) => {
+router.put('/:id', isAdmin, async (req, res, next) => {
   try {
     const product = await Product.findById(req.params.id)
     const updatedProduct = await product.update(req.body)
@@ -29,7 +30,7 @@ router.put('/:id', async (req, res, next) => {
   }
 })
 
-router.delete('/:id', async (req, res, next) => {
+router.delete('/:id', isAdmin, async (req, res, next) => {
   try {
     await Product.destroy({
       where: {

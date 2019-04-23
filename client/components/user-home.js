@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
+import Admin from './admin'
 
 /**
  * COMPONENT
@@ -19,6 +20,7 @@ export const UserHome = props => {
       <Link to="/orders" className="singleLink">
         Order History
       </Link>
+      {props.user.isAdmin && <Admin />}
     </div>
   )
 }

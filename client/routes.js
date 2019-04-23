@@ -3,12 +3,10 @@ import {connect} from 'react-redux'
 import {withRouter, Route, Switch} from 'react-router-dom'
 import PropTypes from 'prop-types'
 import {
-  Signup,
   UserHome,
   Products,
   Cart,
   Order,
-  Login,
   Home,
   SingleProduct,
   OrderHistory
@@ -29,8 +27,6 @@ class Routes extends Component {
     return (
       <Switch>
         {/* Routes placed here are available to all visitors */}
-        <Route path="/login" component={Login} />
-        <Route path="/signup" component={Signup} />
         <Route exact path="/products" component={Products} />
         <Route path="/cart" component={Cart} />
         <Route exact path="/order" component={Order} />
@@ -44,7 +40,7 @@ class Routes extends Component {
           </Switch>
         )}
         {/* Displays our Login component as a fallback */}
-        <Route component={Login} />
+        <Route component={Products} />
       </Switch>
     )
   }

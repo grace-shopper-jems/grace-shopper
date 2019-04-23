@@ -6,6 +6,8 @@ import store from './index'
 const ADD_TO_CART = 'ADD_TO_CART'
 const REMOVE_ITEM = 'REMOVE_ITEM'
 const CLEAR_CART = 'CLEAR_CART'
+const REMOVE_SINGLE_ITEM = 'REMOVE_SINGLE_ITEM'
+const ADD_SINGLE_ITEM = 'ADD_SINGLE_ITEM'
 
 const initialState = {
   cart: [],
@@ -20,6 +22,14 @@ export const removeItem = (product, quantity) => ({
   type: REMOVE_ITEM,
   product,
   quantity
+})
+export const removeSingleItem = product => ({
+  type: REMOVE_SINGLE_ITEM,
+  product
+})
+export const addSingleItem = product => ({
+  type: ADD_SINGLE_ITEM,
+  product
 })
 export const clearCart = () => ({type: CLEAR_CART})
 
@@ -58,14 +68,32 @@ export const deleteItems = (product, quantity) => async dispatch => {
   }
 }
 
+export const deleteSingleItem = product => async dispatch => {
+  try {
+    dispatch(removeSingleItem(product))
+    await axios.delete(`/api/orders/${product.id}`)
+  } catch (error) {
+    console.error(error)
+  }
+}
+
+export const incrementSingleItem = product => async dispatch => {
+  try {
+    dispatch(addSingleItem(product))
+    await axios.post('/api/orders', product)
+  } catch (error) {
+    console.error(error)
+  }
+}
+
 export const reloadCart = () => async dispatch => {
   try {
-    store.getState().cart.cart.map((eachProduct) => {
+    store.getState().cart.cart.map(eachProduct => {
       dispatch(addToOrder(eachProduct))
     })
     dispatch(clearCart())
     const {data} = await axios.get('/api/orders')
-    data.map((eachProduct) => {
+    data.map(eachProduct => {
       for (let i = 0; i < eachProduct.orders.length; i++) {
         dispatch(addToCart(eachProduct))
       }
@@ -88,6 +116,20 @@ export default function(state = initialState, action) {
         ...state,
         cart: state.cart.filter(product => product.id !== action.product.id)
       }
+    case REMOVE_SINGLE_ITEM:
+      state.quantity--
+      let newCart = state.cart.slice()
+      for (let i = newCart.length - 1; i > -1; i--) {
+        let item = newCart[i]
+        if (item.id === action.product.id) {
+          newCart.splice(i, 1)
+          break
+        }
+      }
+      return {...state, cart: newCart}
+    case ADD_SINGLE_ITEM:
+      state.quantity++
+      return {...state, cart: [...state.cart, action.product]}
     case CLEAR_CART:
       return {...state, cart: [], quantity: 0}
     default:

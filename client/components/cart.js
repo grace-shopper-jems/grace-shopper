@@ -1,7 +1,12 @@
 import React, {Component} from 'react'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
-import {deleteItems, completeOrder} from '../store/cart'
+import {
+  deleteItems,
+  completeOrder,
+  deleteSingleItem,
+  incrementSingleItem
+} from '../store/cart'
 import {Link} from 'react-router-dom'
 /**
  * COMPONENT
@@ -14,12 +19,20 @@ export class Cart extends Component {
     this.submitOrder = this.submitOrder.bind(this)
     this.groupCart = this.groupCart.bind(this)
     this.total = this.total.bind(this)
+    this.tax = this.tax.bind(this)
+    this.handleClickMinus = this.handleClickMinus.bind(this)
+    this.handleClickPlus = this.handleClickPlus.bind(this)
   }
 
   handleClick(product, quantity) {
     this.props.deleteFromCart(product, quantity)
   }
-
+  handleClickMinus(product) {
+    this.props.deleteSingleFromCart(product)
+  }
+  handleClickPlus(product) {
+    this.props.incrementSingleFromCart(product)
+  }
   submitOrder(currentCart) {
     this.props.completeOrder(currentCart)
   }
@@ -35,6 +48,7 @@ export class Cart extends Component {
       let material = cart.cart[i].material
       let strapColor = cart.cart[i].strapColor
       let waterproof = cart.cart[i].waterproof
+      let imgUrl = cart.cart[i].imgUrl
       if (groupedCart.findIndex(e => e.id === id) !== -1) {
         let index = groupedCart.findIndex(e => e.id === id)
         groupedCart[index].quantity++
@@ -47,6 +61,7 @@ export class Cart extends Component {
           material,
           strapColor,
           waterproof,
+          imgUrl,
           quantity: 1
         })
       }
@@ -63,35 +78,92 @@ export class Cart extends Component {
     return (total / 100).toFixed(2)
   }
 
+  tax(subtotal) {
+    return (subtotal * 0.0875).toFixed(2)
+  }
+
   render() {
     return (
       <div className="cart">
-        <h3>Here are all the products in your cart: </h3>
+        <div className="sidemenu__close">
+          <h1 className="sidemenu__title">
+            Cart (<span className="cart__quantity">
+              {this.props.cart.quantity}
+            </span>)
+          </h1>
+          <a href="#" className="close-cart">
+            <i className="far fa-times-circle" />
+          </a>
+        </div>
         {this.groupCart().map(eachProduct => {
           return (
-            <div key={eachProduct.id}>
-              <h2>Name: {eachProduct.name}</h2>
-              <h2>Price: {(eachProduct.price / 100).toFixed(2)}</h2>
-              <h2>Quantity: {eachProduct.quantity}</h2>
-              <button
-                type="button"
-                onClick={() =>
-                  this.handleClick(eachProduct, eachProduct.quantity)
-                }
-              >
-                remove
-              </button>
+            <div className="cart__item" key={eachProduct.id}>
+              <div className="cart__item__img">
+                <img src={eachProduct.imgUrl} />
+              </div>
+              <div className="cart__item__container">
+                <h1 className="cart__item__name">{eachProduct.name}</h1>
+                <p className="cart__item__paragraph">
+                  {eachProduct.material}, {eachProduct.diameter},{' '}
+                  {eachProduct.strapColor}
+                </p>
+                <div className="cart__item__controls">
+                  <a
+                    onClick={() =>
+                      this.handleClick(eachProduct, eachProduct.quantity)
+                    }
+                  >
+                    <i className="fas fa-trash" />
+                  </a>
+                  <a onClick={() => this.handleClickPlus(eachProduct)}>
+                    <i className="fas fa-plus-circle" />
+                  </a>
+                  <span className="cart__item__quantity">
+                    {eachProduct.quantity}
+                  </span>
+                  <a onClick={() => this.handleClickMinus(eachProduct)}>
+                    <i className="fas fa-minus-circle" />
+                  </a>
+                  <span className="cart__item__x">x</span>
+                  <span className="cart__item__price">
+                    ${(eachProduct.price / 100).toFixed(2)}
+                  </span>
+                </div>
+              </div>
             </div>
           )
         })}
-        <h1>Sub-Total: {this.total(this.props.cart.cart)}</h1>
-
-        <Link
-          to="/order"
-          onClick={() => this.submitOrder(this.props.cart.cart)}
-        >
-          <button type="button">Order</button>
-        </Link>
+        <div className="total">
+          <span className="total__title">Subtotal</span>
+          <span className="total__price">
+            ${this.total(this.props.cart.cart)}
+          </span>
+          <span className="total__title">Shipping</span>
+          <span className="total__price">Free</span>
+          <span className="total__title">Tax</span>
+          <span className="total__price">
+            ${this.tax(this.total(this.props.cart.cart))}
+          </span>
+          <div className="total__cart">
+            <div className="total__group">
+              <span className="total__cart__title">Total</span>
+              <span className="total__cart__price">
+                ${(
+                  Number(this.tax(this.total(this.props.cart.cart))) +
+                  Number(this.total(this.props.cart.cart))
+                ).toFixed(2)}
+              </span>
+            </div>
+            <Link
+              to="/order"
+              onClick={() => this.submitOrder(this.props.cart.cart)}
+            >
+              <button className="cart__checkout" type="button">
+                Checkout
+              </button>
+            </Link>
+          </div>
+        </div>
       </div>
     )
   }
@@ -110,7 +182,9 @@ const mapDispatch = dispatch => {
   return {
     deleteFromCart: (product, quantity) =>
       dispatch(deleteItems(product, quantity)),
-    completeOrder: currentCart => dispatch(completeOrder(currentCart))
+    completeOrder: currentCart => dispatch(completeOrder(currentCart)),
+    deleteSingleFromCart: product => dispatch(deleteSingleItem(product)),
+    incrementSingleFromCart: product => dispatch(incrementSingleItem(product))
   }
 }
 

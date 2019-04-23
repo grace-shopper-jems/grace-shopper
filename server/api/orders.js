@@ -75,7 +75,7 @@ router.put('/', async (req, res, next) => {
   }
 })
 
-router.delete('/:productId', isAuthenticated, async (req, res, next) => {
+router.delete('/:productId', async (req, res, next) => {
   try {
     const productId = req.params.productId
     if (req.session && req.session.passport) {

@@ -225,12 +225,21 @@
 .is-visible {
   width: 450px;
 }
-.products {
+.admin,
+.checkout,
+.singleProduct,
+.products,
+.cart,
+.order,
+.userHome,
+.orderHistory,
+.oauth,
+.updateUserForm {
   padding-top: 100px;
   padding-bottom: 20px;
-  height: 100%;
-  width: 100%;
 }
+
+
 .products__layout {
   display: flex;
   flex-wrap: wrap;
@@ -458,6 +467,24 @@
   background-image: url('flatlay.jpg');
   background-size: cover;
   padding-top: 80px;
+}
+.admin {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.admin_product_list {
+  display: flex;
+  flex-direction: column;
+}
+
+/* body {
+  font-family: sans-serif;
+}
+
+a {
+  text-decoration: none;
 }
 .orderHistory,
 .order,

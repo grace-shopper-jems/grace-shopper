@@ -1,5 +1,6 @@
 const router = require('express').Router()
 const {Order, Product} = require('../db/models/')
+const {isAuthenticated} = require('./authenticate')
 
 router.get('/all', async (req, res, next) => {
   try {

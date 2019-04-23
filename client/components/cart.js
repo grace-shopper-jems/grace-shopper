@@ -8,6 +8,7 @@ import {
   incrementSingleItem
 } from '../store/cart'
 import {Link} from 'react-router-dom'
+import Checkout from './payment'
 /**
  * COMPONENT
  */
@@ -16,7 +17,6 @@ export class Cart extends Component {
   constructor(props) {
     super(props)
     this.handleClick = this.handleClick.bind(this)
-    this.submitOrder = this.submitOrder.bind(this)
     this.groupCart = this.groupCart.bind(this)
     this.total = this.total.bind(this)
     this.tax = this.tax.bind(this)
@@ -32,9 +32,6 @@ export class Cart extends Component {
   }
   handleClickPlus(product) {
     this.props.incrementSingleFromCart(product)
-  }
-  submitOrder(currentCart) {
-    this.props.completeOrder(currentCart)
   }
 
   groupCart() {
@@ -154,16 +151,13 @@ export class Cart extends Component {
                 ).toFixed(2)}
               </span>
             </div>
-            <Link
-              to="/order"
-              onClick={() => this.submitOrder(this.props.cart.cart)}
-            >
-              <button className="cart__checkout" type="button">
-                Checkout
-              </button>
-            </Link>
+            <Checkout
+              cart={this.props.cart.cart}
+              total={this.total(this.props.cart.cart)}
+            />
           </div>
         </div>
+        <h1>Sub-Total: {this.total(this.props.cart.cart)}</h1>
       </div>
     )
   }
@@ -182,7 +176,6 @@ const mapDispatch = dispatch => {
   return {
     deleteFromCart: (product, quantity) =>
       dispatch(deleteItems(product, quantity)),
-    completeOrder: currentCart => dispatch(completeOrder(currentCart)),
     deleteSingleFromCart: product => dispatch(deleteSingleItem(product)),
     incrementSingleFromCart: product => dispatch(incrementSingleItem(product))
   }

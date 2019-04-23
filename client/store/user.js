@@ -8,6 +8,7 @@ import {clearCart, reloadCart} from './cart'
 const GET_USER = 'GET_USER'
 const REMOVE_USER = 'REMOVE_USER'
 const GET_USER_HISTORY = 'GET_USER_HISTORY'
+const UPDATE_USER = 'UPDATE_USER'
 
 /**
  * INITIAL STATE
@@ -23,6 +24,7 @@ const defaultUser = {
 const getUser = user => ({type: GET_USER, user})
 const removeUser = () => ({type: REMOVE_USER})
 const getUserHistory = orders => ({type: GET_USER_HISTORY, orders})
+const updateUser = userInfo => ({type: UPDATE_USER, userInfo})
 
 /**
  * THUNK CREATORS
@@ -30,7 +32,7 @@ const getUserHistory = orders => ({type: GET_USER_HISTORY, orders})
 export const me = () => async dispatch => {
   try {
     const res = await axios.get('/auth/me')
-    dispatch(getUser(res.data || defaultUser))
+    dispatch(getUser(res.data || defaultUser.user))
   } catch (err) {
     console.error(err)
   }
@@ -46,6 +48,14 @@ export const getOrderHistoryThunk = () => async dispatch => {
   }
 }
 
+export const updateUserThunk = (id, userInfo) => async dispatch => {
+  try {
+    await axios.put(`/api/users/${id}`, userInfo)
+    dispatch(updateUser(userInfo))
+  } catch (error) {
+    console.error(error.message)
+  }
+}
 export const auth = (
   firstName,
   lastName,
@@ -113,9 +123,27 @@ export default function(state = defaultUser, action) {
     case GET_USER:
       return {...state, user: action.user}
     case REMOVE_USER:
-      return defaultUser
+      return {...state, user: {}, orders: []}
     case GET_USER_HISTORY:
       return {...state, orders: action.orders}
+    case UPDATE_USER:
+      return {
+        ...state,
+        user: {
+          ...state.user,
+          firstName: action.userInfo.firstName,
+          lastName: action.userInfo.lastName,
+          phoneNumber: action.userInfo.phoneNumber,
+          streetAddressShip: action.userInfo.streetAddressShip,
+          cityShip: action.userInfo.cityShip,
+          stateShip: action.userInfo.stateShip,
+          zipShip: action.userInfo.zipShip,
+          streetAddressBill: action.userInfo.streetAddressBill,
+          cityBill: action.userInfo.cityBill,
+          stateBill: action.userInfo.stateBill,
+          zipBill: action.userInfo.zipBill
+        }
+      }
     default:
       return state
   }

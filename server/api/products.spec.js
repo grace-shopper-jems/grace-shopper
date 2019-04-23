@@ -1,4 +1,4 @@
-/* global describe beforeEach it */
+// /* global describe beforeEach it */
 
 const {expect} = require('chai')
 const request = require('supertest')
@@ -25,7 +25,7 @@ describe('Product routes', () => {
       })
     })
 
-    it('GET /api/products', async () => {
+    xit('GET /api/products', async () => {
       const res = await request(app)
         .get('/api/products')
         .expect(200)

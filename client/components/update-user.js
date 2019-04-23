@@ -14,7 +14,7 @@ class UpdateUser extends Component {
       cityShip: '',
       stateShip: '',
       zipShip: '',
-      streetAddressBill: '',
+      //   streetAddressBill: '',
       cityBill: '',
       stateBill: '',
       zipBill: ''
@@ -22,21 +22,21 @@ class UpdateUser extends Component {
     this.handleChange = this.handleChange.bind(this)
   }
 
-  componentDidMount() {
-    this.setState({
-      firstName: this.props.user.firstName,
-      lastName: this.props.user.lastName,
-      email: this.props.user.email,
-      phoneNumber: this.props.user.phoneNumber,
-      streetAddressShip: this.props.user.streetAddressShip,
-      cityShip: this.props.user.cityShip,
-      stateShip: this.props.user.stateShip,
-      zipShip: this.props.user.zipShip,
-      streetAddressBill: this.props.user.streetAddressBill,
-      cityBill: this.props.user.cityBill,
-      stateBill: this.props.user.stateBill,
-      zipBill: this.props.user.zipBill
-    })
+  static getDerivedStateFromProps(props) {
+    return {
+      firstName: props.user.firstName,
+      lastName: props.user.lastName,
+      email: props.user.email,
+      phoneNumber: props.user.phoneNumber,
+      streetAddressShip: props.user.streetAddressShip,
+      cityShip: props.user.cityShip,
+      stateShip: props.user.stateShip,
+      zipShip: props.user.zipShip,
+      streetAddressBill: props.user.streetAddressBill,
+      cityBill: props.user.cityBill,
+      stateBill: props.user.stateBill,
+      zipBill: props.user.zipBill
+    }
   }
 
   handleChange = event => {
@@ -60,7 +60,7 @@ class UpdateUser extends Component {
             type="text"
             name="firstName"
             onChange={this.handleChange}
-            value={this.state.firstName}
+            value={this.state.firstName || ''}
           />
         </div>
         <div>
@@ -69,7 +69,7 @@ class UpdateUser extends Component {
             type="text"
             name="lastName"
             onChange={this.handleChange}
-            value={this.state.lastName}
+            value={this.state.lastName || ''}
           />
         </div>
         <div>
@@ -78,7 +78,7 @@ class UpdateUser extends Component {
             type="text"
             name="email"
             onChange={this.handleChange}
-            value={this.state.email}
+            value={this.state.email || ''}
           />
         </div>
         <div>
@@ -87,7 +87,7 @@ class UpdateUser extends Component {
             type="text"
             name="phoneNumber"
             onChange={this.handleChange}
-            value={this.state.phoneNumber}
+            value={this.state.phoneNumber || ''}
           />
         </div>
         <h2>Shipping Address</h2>
@@ -97,7 +97,7 @@ class UpdateUser extends Component {
             type="text"
             name="streetAddressShip"
             onChange={this.handleChange}
-            value={this.state.streetAddressShip}
+            value={this.state.streetAddressShip || ''}
           />
         </div>
         <div>
@@ -106,7 +106,7 @@ class UpdateUser extends Component {
             type="text"
             name="cityShip"
             onChange={this.handleChange}
-            value={this.state.cityShip}
+            value={this.state.cityShip || ''}
           />
         </div>
         <div>
@@ -115,7 +115,7 @@ class UpdateUser extends Component {
             type="text"
             name="stateShip"
             onChange={this.handleChange}
-            value={this.state.stateShip}
+            value={this.state.stateShip || ''}
           />
         </div>
         <div>
@@ -124,7 +124,7 @@ class UpdateUser extends Component {
             type="text"
             name="zipShip"
             onChange={this.handleChange}
-            value={this.state.zipShip}
+            value={this.state.zipShip || ''}
           />
         </div>
         <h2>Billing Address</h2>
@@ -132,36 +132,36 @@ class UpdateUser extends Component {
           <label>Street Address</label>
           <input
             type="text"
-            name="zipShip"
+            name="streetAddressBill"
             onChange={this.handleChange}
-            value={this.state.streetAddressBill}
+            value={this.state.streetAddressBill || ''}
           />
         </div>
         <div>
           <label>City</label>
           <input
             type="text"
-            name="cityShip"
+            name="cityBill"
             onChange={this.handleChange}
-            value={this.state.cityBill}
+            value={this.state.cityBill || ''}
           />
         </div>
         <div>
           <label>State</label>
           <input
             type="text"
-            name="stateShip"
+            name="stateBill"
             onChange={this.handleChange}
-            value={this.state.stateBill}
+            value={this.state.stateBill || ''}
           />
         </div>
         <div>
           <label>Zip Code</label>
           <input
             type="text"
-            name="zipShip"
+            name="zipBill"
             onChange={this.handleChange}
-            value={this.state.zipBill}
+            value={this.state.zipBill || ''}
           />
         </div>
         <button type="submit">Submit</button>
@@ -171,6 +171,7 @@ class UpdateUser extends Component {
 }
 
 const mapStateToProps = state => {
+  console.log('mstp', state.user.user)
   return {
     user: state.user.user
   }

@@ -1,6 +1,8 @@
 import axios from 'axios'
 import history from '../history'
 import {clearCart, reloadCart} from './cart'
+import {Navbar} from '../components/navbar'
+import React from 'react'
 
 /**
  * ACTION TYPES
@@ -110,6 +112,7 @@ export const logout = () => async dispatch => {
     dispatch(clearCart())
     history.push('/login')
     localStorage.clear()
+    return <Navbar />
   } catch (err) {
     console.error(err)
   }

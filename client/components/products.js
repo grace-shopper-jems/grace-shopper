@@ -53,21 +53,6 @@ class Products extends Component {
           })}
         </div>
       </div>
-
-      // <div>
-      //   {this.props.products.allProducts.map(product => {
-      //     return (
-      //       <div key={product.id}>
-      //         <h2>{product.name}</h2>
-      //         <h3>{product.diameter}</h3>
-      //         <h3>{product.price}</h3>
-      //         <button type="button" onClick={() => this.handleClick(product)}>
-      //           Add To Cart
-      //         </button>
-      //       </div>
-      //     )
-      //   })}
-      // </div>
     )
   }
 }

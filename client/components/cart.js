@@ -157,7 +157,6 @@ export class Cart extends Component {
             />
           </div>
         </div>
-        <h1>Sub-Total: {this.total(this.props.cart.cart)}</h1>
       </div>
     )
   }

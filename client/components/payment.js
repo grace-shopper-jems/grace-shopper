@@ -34,9 +34,9 @@ class Checkout extends React.Component {
 
   render() {
     return (
-      <div className="checkout">
+      <div className="checkout cart__checkout">
         <StripeCheckout
-          amount={Number(this.props.total*100)}
+          amount={Math.round(Number(this.props.total*100*1.0875))}
           billingAddress
           description="enter 4242 4242 4242 4242 to test"
           name="Timeless"

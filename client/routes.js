@@ -46,11 +46,6 @@ class Routes extends Component {
             <Route path="/admin" component={Admin} />
           </Switch>
         )}
-<<<<<<< HEAD
-
-        {/* Displays our Login component as a fallback */}
-=======
->>>>>>> master
         <Route component={Home} />
       </Switch>
     )

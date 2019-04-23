@@ -39,7 +39,7 @@ router.get('/', async (req, res, next) => {
   }
 })
 
-router.post('/', isAuthenticated, async (req, res, next) => {
+router.post('/', async (req, res, next) => {
   try {
     if (req.session && req.session.passport) {
       const newOrder = await Order.create({
@@ -54,7 +54,7 @@ router.post('/', isAuthenticated, async (req, res, next) => {
   }
 })
 
-router.put('/', isAuthenticated, async (req, res, next) => {
+router.put('/', async (req, res, next) => {
   try {
     if (req.session && req.session.passport) {
       const newOrder = await Order.update(

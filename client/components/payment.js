@@ -18,7 +18,6 @@ const errorPayment = data => {
 class Checkout extends React.Component {
   onToken = () => token => {
     this.props.completeOrder(this.props.cart)
-    // paymentApi()
     axios
       .post(PAYMENT_SERVER_URL, {
         source: token.id,
@@ -27,25 +26,20 @@ class Checkout extends React.Component {
       })
       .then(successPayment)
       .catch(errorPayment)
-    // TODO: Send the token information and any other
-    // relevant information to your payment process
-    // server, wait for the response, and update the UI
-    // accordingly. How this is done is up to you. Using
-    // XHR, fetch, or a GraphQL mutation is typical.
   }
 
   render() {
     return (
       <div className="checkout">
         <StripeCheckout
-          amount={Number(this.props.total)}
+          amount={Number(this.props.total*100)}
           billingAddress
-          description="Just a test page!"
+          description="enter 4242 4242 4242 4242 to test"
           name="Timeless"
           stripeKey="pk_test_BtVtkp5NeH03CaIuy8PkxJE900WxrX8oUQ"
           token={this.onToken()}
           label="Checkout"
-          panelLabel="Pay for these jems"
+          // panelLabel="Pay for these jems"
         />
       </div>
     )

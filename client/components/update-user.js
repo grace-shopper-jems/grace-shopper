@@ -48,6 +48,7 @@ class UpdateUser extends Component {
   handleSubmit = event => {
     event.preventDefault()
     console.log(this.props)
+    alert('Changes submitted!')
     this.props.updateUser(this.props.user.id, this.state)
   }
 

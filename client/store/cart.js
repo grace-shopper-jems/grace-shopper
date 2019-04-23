@@ -1,5 +1,6 @@
 import axios from 'axios'
 import store from './index'
+
 /**
  * ACTION TYPES
  */
@@ -29,6 +30,7 @@ export const clearCart = () => ({type: CLEAR_CART})
 
 export const completeOrder = currentCart => dispatch => {
   try {
+    console.log("CURRENT CART", currentCart)
     currentCart.map(async cartItem => {
       await axios.put('/api/orders', cartItem)
     })
@@ -38,6 +40,7 @@ export const completeOrder = currentCart => dispatch => {
     console.error(error)
   }
 }
+
 
 export const addToOrder = product => async dispatch => {
   try {

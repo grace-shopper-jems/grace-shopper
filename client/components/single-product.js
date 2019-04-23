@@ -26,7 +26,7 @@ export class SingleProduct extends Component {
       <div className="singleProduct">
         <div className="back-button">
           <Link to="/products" className="singleLink">
-            <h2>&larr; Go Back</h2>
+            <h2>Go Back</h2>
           </Link>
           <img className="single_img" src={`/${singleProduct.imgUrl}`} />
         </div>

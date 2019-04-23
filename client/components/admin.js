@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import {setProducts, getSingleProduct} from '../store/products'
+import {setProducts, getSingleProduct, deleteProduct} from '../store/products'
 
 export class Admin extends Component {
   componentDidMount() {
@@ -20,7 +20,9 @@ export class Admin extends Component {
                   See details
                 </button>
                 <button>Edit</button>
-                <button>Delete</button>
+                <button onClick={() => this.props.deleteItem(product.id)}>
+                  Delete
+                </button>
               </div>
             )
           })}
@@ -49,7 +51,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     setProducts: () => dispatch(setProducts()),
-    getSingleProduct: id => dispatch(getSingleProduct(id))
+    getSingleProduct: id => dispatch(getSingleProduct(id)),
+    deleteItem: id => dispatch(deleteProduct(id))
   }
 }
 

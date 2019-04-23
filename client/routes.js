@@ -13,6 +13,7 @@ import {
   SingleProduct,
   Checkout,
   OrderHistory,
+  UpdateUser,
   Admin
 } from './components'
 import {me} from './store'
@@ -39,6 +40,7 @@ class Routes extends Component {
         <Route path="/home" component={Home} />
         <Route exact path="/products/:id" component={SingleProduct} />
         <Route path="/payment" component={Checkout} />
+        <Route path="/editProfile" component={UpdateUser} />
         {isLoggedIn && (
           <Switch>
             <Route path="/profile" component={UserHome} />

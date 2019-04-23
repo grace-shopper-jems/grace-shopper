@@ -71,7 +71,8 @@ a {
 .order,
 .userHome,
 .orderHistory,
-.oauth {
+.oauth,
+.updateUserForm {
   height: 100%;
   padding: 90px 10px 10px 10px;
 }

@@ -7,11 +7,15 @@ import {Link} from 'react-router-dom'
  * COMPONENT
  */
 export const UserHome = props => {
+  console.log('USER HOME PROPS', props)
   const {email} = props
 
   return (
     <div className="userHome">
       <h3>Welcome, {email}</h3>
+      <Link to="/editProfile" className="singleLink">
+        Edit Profile
+      </Link>
       <Link to="/orders" className="singleLink">
         Order History
       </Link>
@@ -24,6 +28,7 @@ export const UserHome = props => {
  */
 const mapState = state => {
   return {
+    user: state.user.user,
     email: state.user.user.email
   }
 }

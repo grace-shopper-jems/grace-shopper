@@ -32,14 +32,14 @@ class Checkout extends React.Component {
     return (
       <div className="checkout">
         <StripeCheckout
-          amount={Number(this.props.total)}
+          amount={Number(this.props.total*100)}
           billingAddress
-          description="Just a test page!"
+          description="enter 4242 4242 4242 4242 to test"
           name="Timeless"
           stripeKey="pk_test_BtVtkp5NeH03CaIuy8PkxJE900WxrX8oUQ"
           token={this.onToken()}
           label="Checkout"
-          panelLabel="Pay for these jems"
+          // panelLabel="Pay for these jems"
         />
       </div>
     )

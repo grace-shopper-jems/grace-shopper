@@ -22,6 +22,7 @@ if (process.env.NODE_ENV !== 'production') require('../secrets')
 const paymentApi = require('./api/checkout')
 
 const configureRoutes = app => {
+  if (!app.get) return
   paymentApi(app)
 }
 

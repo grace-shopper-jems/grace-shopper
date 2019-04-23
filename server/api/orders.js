@@ -1,6 +1,6 @@
 const router = require('express').Router()
 const {Order, Product} = require('../db/models/')
-const isAuthenticated = require('./authenticate')
+const {isAuthenticated} = require('./authenticate')
 
 router.get('/all', async (req, res, next) => {
   try {
@@ -54,7 +54,7 @@ router.post('/', isAuthenticated, async (req, res, next) => {
   }
 })
 
-router.put('/', isAuthenticated, async (req, res, next) => {
+router.put('/', async (req, res, next) => {
   try {
     if (req.session && req.session.passport) {
       const newOrder = await Order.update(

@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
-import {deleteItems, completeOrder} from '../store/cart'
+import {deleteItems} from '../store/cart'
 import {Link} from 'react-router-dom'
 import Checkout from './payment'
 /**
@@ -12,17 +12,12 @@ export class Cart extends Component {
   constructor(props) {
     super(props)
     this.handleClick = this.handleClick.bind(this)
-    this.submitOrder = this.submitOrder.bind(this)
     this.groupCart = this.groupCart.bind(this)
     this.total = this.total.bind(this)
   }
 
   handleClick(product, quantity) {
     this.props.deleteFromCart(product, quantity)
-  }
-
-  submitOrder(currentCart) {
-    this.props.completeOrder(currentCart)
   }
 
   groupCart() {
@@ -108,8 +103,7 @@ const mapState = state => {
 const mapDispatch = dispatch => {
   return {
     deleteFromCart: (product, quantity) =>
-      dispatch(deleteItems(product, quantity)),
-    completeOrder: currentCart => dispatch(completeOrder(currentCart))
+    dispatch(deleteItems(product, quantity))
   }
 }
 

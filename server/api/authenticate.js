@@ -1,6 +1,6 @@
 const {User} = require('../db/models/')
 
-const isAuthenticated = async (req, res, next) => {
+const isAdmin = async (req, res, next) => {
   try {
     const user = await User.findByPk(req.session.passport.user)
     if (user.dataValues.isAdmin) {
@@ -13,4 +13,16 @@ const isAuthenticated = async (req, res, next) => {
   }
 }
 
-module.exports = isAuthenticated
+const isAuthenticated = (req, res, next) => {
+  try {
+    if (req.user) {
+      return next()
+    } else {
+      res.redirect('/home');
+    }
+  } catch (e) {
+    res.redirect('/home');
+  }
+}
+
+module.exports = {isAdmin, isAuthenticated}

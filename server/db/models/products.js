@@ -31,8 +31,7 @@ const Product = db.define('product', {
     allowNull: false
   },
   imgUrl: {
-    type: Sequelize.STRING,
-    defaultValue: ''
+    type: Sequelize.STRING
   }
 })
 

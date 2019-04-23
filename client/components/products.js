@@ -17,6 +17,7 @@ class Products extends Component {
     this.props.addToCart(product)
     this.props.addingToOrder(product)
   }
+
   render() {
     return (
       <div className="products">

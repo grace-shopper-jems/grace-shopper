@@ -1,13 +1,11 @@
 const router = require('express').Router()
 const {User} = require('../db/models')
+const isAuthenticated = require('./authenticate')
 module.exports = router
 
-router.get('/', async (req, res, next) => {
+router.get('/', isAuthenticated, async (req, res, next) => {
   try {
     const users = await User.findAll({
-      // explicitly select only the id and email fields - even though
-      // users' passwords are encrypted, it won't help if we just
-      // send everything to anyone who asks!
       attributes: ['id', 'firstName', 'email']
     })
     res.json(users)
@@ -16,7 +14,7 @@ router.get('/', async (req, res, next) => {
   }
 })
 
-router.get('/:userId', async (req, res, next) => {
+router.get('/:userId', isAuthenticated, async (req, res, next) => {
   try {
     const user = await User.findByPk(req.params.userId)
     res.send({
@@ -39,7 +37,7 @@ router.get('/:userId', async (req, res, next) => {
   }
 })
 
-router.put('/:userId', async (req, res, next) => {
+router.put('/:userId', isAuthenticated, async (req, res, next) => {
   try {
     const [rowsUpdated, userUpdate] = await User.update(
       {

@@ -39,8 +39,7 @@ export class Admin extends Component {
                   <span>{`Waterproof?: ${singleProduct.waterproof}`}</span>
                   <span>{`Quantity: ${singleProduct.quantity}`}</span>
                 </div>
-              )
-              }
+              )}
             </div>
           )}
         </div>

@@ -1,13 +1,10 @@
 import React, {Component} from 'react'
-import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 import {
   deleteItems,
-  completeOrder,
   deleteSingleItem,
   incrementSingleItem
 } from '../store/cart'
-import {Link} from 'react-router-dom'
 import Checkout from './payment'
 /**
  * COMPONENT

@@ -1,5 +1,4 @@
 import React, {Component} from 'react'
-import {connect} from 'react-redux'
 import {updateProduct} from '../store/products'
 
 export class EditProduct extends Component {
@@ -47,7 +46,6 @@ export class EditProduct extends Component {
   }
 
   render() {
-    console.log(this.props)
     return (
       <div className="form">
         <form onSubmit={this.handleSubmit}>

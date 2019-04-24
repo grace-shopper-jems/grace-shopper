@@ -3,9 +3,6 @@ import StripeCheckout from 'react-stripe-checkout'
 import axios from 'axios'
 import {completeOrder} from '../store/cart'
 import {connect} from 'react-redux'
-
-// import paymentApi from '../../server/api/checkout'
-// import STRIPE_PUBLISHABLE from './constants/stripe'
 import PAYMENT_SERVER_URL from '../../server/constants/server'
 
 const successPayment = () => {
@@ -32,15 +29,17 @@ class Checkout extends React.Component {
   render() {
     return (
       <div className="checkout cart__checkout">
-          <StripeCheckout
-            amount={Math.round(Number(this.props.total*100*1.0875))}
-            billingAddress
-            description="enter 4242 4242 4242 4242 to test"
-            name="Timeless"
-            stripeKey="pk_test_BtVtkp5NeH03CaIuy8PkxJE900WxrX8oUQ"
-            token={this.onToken()}
-            label="Checkout"
-          />
+          {this.props.total > 0 &&
+            <StripeCheckout
+              amount={Math.round(Number(this.props.total*100*1.0875))}
+              billingAddress
+              description="enter 4242 4242 4242 4242 to test"
+              name="Timeless"
+              stripeKey="pk_test_BtVtkp5NeH03CaIuy8PkxJE900WxrX8oUQ"
+              token={this.onToken()}
+              label="Checkout"
+            />
+          }
       </div>
     )
   }

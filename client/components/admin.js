@@ -31,9 +31,13 @@ export class Admin extends Component {
             <div key={singleProduct.id}>
               <img src={singleProduct.imgUrl} />
               {singleProduct.diameter && (
-                <div>
+                <div className="admin_single_info">
                   <span>{`Diameter: ${singleProduct.diameter}`}</span>
                   <span>{`Price: ${singleProduct.price}`}</span>
+                  <span>{`Strap Color: ${singleProduct.strapColor}`}</span>
+                  <span>{`Material: ${singleProduct.material}`}</span>
+                  <span>{`Waterproof?: ${singleProduct.waterproof}`}</span>
+                  <span>{`Quantity: ${singleProduct.quantity}`}</span>
                 </div>
               )}
             </div>

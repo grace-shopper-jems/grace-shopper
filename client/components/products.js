@@ -26,15 +26,15 @@ class Products extends Component {
             return (
               <div key={product.id} className="products__spacing">
                 <div className="products__item">
-                  <img src={product.imgUrl} className="products__img" />
+                  <Link
+                    to={'/products/' + product.id}
+                    key={product.id}
+                    className="singleLink"
+                  >
+                    <img src={product.imgUrl} className="products__img" />
+                  </Link>
                   <span className="products__title">
-                    <Link
-                      to={'/products/' + product.id}
-                      key={product.id}
-                      className="singleLink"
-                    >
-                      <h2>{product.name}</h2>
-                    </Link>
+                    <h2>{product.name}</h2>
                   </span>
                   <span className="products__text">{product.diameter}MM</span>
                   <span className="products__price">
@@ -42,6 +42,7 @@ class Products extends Component {
                   </span>
 
                   <button
+                    className="product__button"
                     type="button"
                     onClick={() => this.handleClick(product)}
                   >

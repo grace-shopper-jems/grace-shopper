@@ -19,7 +19,6 @@ export class Admin extends Component {
                 <button onClick={() => this.props.getSingleProduct(product.id)}>
                   See details
                 </button>
-                <button>Edit</button>
                 <button onClick={() => this.props.deleteItem(product.id)}>
                   Delete
                 </button>
@@ -33,11 +32,10 @@ export class Admin extends Component {
               <img src={singleProduct.imgUrl} />
               {singleProduct.diameter && (
                 <div>
-                <span>{`Diameter: ${singleProduct.diameter}`}</span>
-                <span>{`Price: ${singleProduct.price}`}</span>
+                  <span>{`Diameter: ${singleProduct.diameter}`}</span>
+                  <span>{`Price: ${singleProduct.price}`}</span>
                 </div>
-              )
-              }
+              )}
             </div>
           )}
         </div>

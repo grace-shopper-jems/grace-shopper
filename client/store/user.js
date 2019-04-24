@@ -110,7 +110,6 @@ export const logout = () => async dispatch => {
     await axios.post('/auth/logout')
     dispatch(removeUser())
     dispatch(clearCart())
-    history.push('/login')
     localStorage.clear()
     return <Navbar />
   } catch (err) {

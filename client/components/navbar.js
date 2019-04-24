@@ -28,9 +28,6 @@ class Navbar extends Component {
       document.querySelector('.cart__checkout').onclick = function() {
         cart.classList.toggle('is-visible', false)
       }
-      // document.querySelector('.btn').onclick = function() {
-      //   sidemenu.classList.toggle('is-visible', false)
-      // }
     })()
   }
 

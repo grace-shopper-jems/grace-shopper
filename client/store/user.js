@@ -43,7 +43,6 @@ export const me = () => async dispatch => {
 export const getOrderHistoryThunk = () => async dispatch => {
   try {
     const res = await axios.get('/api/orders/all')
-    console.log('res in get orders history thunk', res)
     dispatch(getUserHistory(res.data))
   } catch (error) {
     console.error(error)

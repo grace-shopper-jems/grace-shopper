@@ -478,6 +478,15 @@
   flex-direction: column;
 }
 
+.admin_product_info {
+  display: flex;
+}
+
+.admin_single_info {
+  display: flex;
+  flex-direction: column;
+ }
+
 /* body {
   font-family: sans-serif;
 }

@@ -8,7 +8,6 @@ import Admin from './admin'
  * COMPONENT
  */
 export const UserHome = props => {
-  console.log('USER HOME PROPS', props)
   const {email} = props
 
   return (

@@ -28,7 +28,6 @@ describe('User routes', () => {
         .expect(302)
 
       expect(res.body).to.be.an('object')
-      // expect(res.body[0].email).to.be.equal(codysEmail)
     })
-  }) // end describe('/api/users')
-}) // end describe('User routes')
+  })
+})

@@ -47,7 +47,6 @@ class UpdateUser extends Component {
 
   handleSubmit = event => {
     event.preventDefault()
-    console.log(this.props)
     alert('Changes submitted!')
     this.props.updateUser(this.props.user.id, this.state)
   }
@@ -172,7 +171,6 @@ class UpdateUser extends Component {
 }
 
 const mapStateToProps = state => {
-  console.log('mstp', state.user.user)
   return {
     user: state.user.user
   }

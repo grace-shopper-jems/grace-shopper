@@ -1,6 +1,5 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import PropTypes from 'prop-types'
 import {auth, login} from '../store'
 import OauthLoginForm from './oauth-login-form'
 
@@ -42,14 +41,12 @@ class AuthForm extends Component {
         await this.props.login(email, password, formName)
       }
     } catch (error) {
-      console.log('error')
       this.setState({
         error
       })
     }
   }
   render() {
-    console.log('state error', this.state.error)
     return (
       <div className="sidemenu">
         <div className="sidemenu__close">

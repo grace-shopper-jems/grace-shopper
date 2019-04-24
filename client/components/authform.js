@@ -2,14 +2,15 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import PropTypes from 'prop-types'
 import {auth, login} from '../store'
+import OauthLoginForm from './oauth-login-form'
 
 class AuthForm extends Component {
   constructor(props) {
     super(props)
     this.state = {
       name: 'login',
-      displayName: 'Login'
-      //   error: state.user.error
+      displayName: 'Login',
+      error: ''
     }
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleClick = this.handleClick.bind(this)
@@ -27,20 +28,28 @@ class AuthForm extends Component {
       })
     }
   }
-  handleSubmit(event) {
-    event.preventDefault()
-    const formName = event.target.name
-    const email = event.target.email.value
-    const password = event.target.password.value
-    if (this.state.name === 'signup') {
-      const firstName = event.target.firstName.value
-      const lastName = event.target.lastName.value
-      this.props.auth(firstName, lastName, email, password, formName)
-    } else {
-      this.props.login(email, password, formName)
+  async handleSubmit(event) {
+    try {
+      event.preventDefault()
+      const formName = event.target.name
+      const email = event.target.email.value
+      const password = event.target.password.value
+      if (this.state.name === 'signup') {
+        const firstName = event.target.firstName.value
+        const lastName = event.target.lastName.value
+        await this.props.auth(firstName, lastName, email, password, formName)
+      } else {
+        await this.props.login(email, password, formName)
+      }
+    } catch (error) {
+      console.log('error')
+      this.setState({
+        error
+      })
     }
   }
   render() {
+    console.log('state error', this.state.error)
     return (
       <div className="sidemenu">
         <div className="sidemenu__close">
@@ -114,8 +123,12 @@ class AuthForm extends Component {
               <button className="btn" type="submit">
                 {this.state.displayName}
               </button>
-              {/* {error && error.response && <div> {error.response.data} </div>} */}
+              {this.props.error &&
+                this.props.error.response && (
+                  <h1> {this.props.error.response.data} </h1>
+                )}
             </form>
+
             {this.state.name === 'signup' ? (
               <a className="login__link" onClick={() => this.handleClick()}>
                 Already registered? <span>Log In Here!</span>
@@ -125,6 +138,7 @@ class AuthForm extends Component {
                 Not signed up? <span>Register Here!</span>
               </a>
             )}
+            <OauthLoginForm />
           </div>
         </div>
       </div>
@@ -132,6 +146,11 @@ class AuthForm extends Component {
   }
 }
 
+const mapState = state => {
+  return {
+    error: state.user.user.error
+  }
+}
 const mapDispatch = dispatch => {
   return {
     auth: (firstName, lastName, email, password, formName) =>
@@ -141,4 +160,4 @@ const mapDispatch = dispatch => {
   }
 }
 
-export default connect(null, mapDispatch)(AuthForm)
+export default connect(mapState, mapDispatch)(AuthForm)

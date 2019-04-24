@@ -10,7 +10,6 @@ import PAYMENT_SERVER_URL from '../../server/constants/server'
 
 const successPayment = () => {
   alert('Payment Successful!')
-
 }
 
 const errorPayment = () => {
@@ -18,7 +17,6 @@ const errorPayment = () => {
 }
 
 class Checkout extends React.Component {
-
   onToken = () => token => {
     this.props.completeOrder(this.props.cart)
     axios
@@ -30,7 +28,6 @@ class Checkout extends React.Component {
       .then(successPayment)
       .catch(errorPayment)
   }
-
 
   render() {
     return (

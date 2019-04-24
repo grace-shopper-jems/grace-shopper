@@ -41,7 +41,7 @@ class Routes extends Component {
             <Route path="/editProfile" component={UpdateUser} />
           </Switch>
         )}
-        <Route component={Home} />
+        <Route exact path="/" component={Home} />
       </Switch>
     )
   }

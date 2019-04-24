@@ -39,6 +39,7 @@ class Routes extends Component {
             <Route path="/profile" component={UserHome} />
             <Route exact path="/orders" component={OrderHistory} />
             <Route path="/editProfile" component={UpdateUser} />
+            <Route exact path="/" component={Home} />
           </Switch>
         )}
         <Route exact path="/" component={Home} />

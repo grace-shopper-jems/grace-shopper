@@ -1,4 +1,3 @@
-/* global describe beforeEach afterEach it */
 // import {expect} from 'chai'
 // import {me, logout} from './user'
 // import axios from 'axios'
@@ -10,7 +9,7 @@
 // const middlewares = [thunkMiddleware]
 // const mockStore = configureMockStore(middlewares)
 
-// describe('thunk creators', () => {
+// xdescribe('thunk creators', () => {
 //   let store
 //   let mockAxios
 
@@ -27,7 +26,7 @@
 //   })
 
 //   describe('me', () => {
-//     it('eventually dispatches the GET USER action', async () => {
+//     xit('eventually dispatches the GET USER action', async () => {
 //       const fakeUser = {email: 'Cody'}
 //       mockAxios.onGet('/auth/me').replyOnce(200, fakeUser)
 //       await store.dispatch(me())
@@ -38,7 +37,7 @@
 //   })
 
 //   describe('logout', () => {
-//     it('logout: eventually dispatches the REMOVE_USER action', async () => {
+//     xit('logout: eventually dispatches the REMOVE_USER action', async () => {
 //       mockAxios.onPost('/auth/logout').replyOnce(204)
 //       await store.dispatch(logout())
 //       const actions = store.getActions()

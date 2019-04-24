@@ -19,7 +19,6 @@ export class Admin extends Component {
                 <button onClick={() => this.props.getSingleProduct(product.id)}>
                   See details
                 </button>
-                <button>Edit</button>
                 <button onClick={() => this.props.deleteItem(product.id)}>
                   Delete
                 </button>
@@ -32,12 +31,15 @@ export class Admin extends Component {
             <div key={singleProduct.id}>
               <img src={singleProduct.imgUrl} />
               {singleProduct.diameter && (
-                <div>
-                <span>{`Diameter: ${singleProduct.diameter}`}</span>
-                <span>{`Price: ${singleProduct.price}`}</span>
+                <div className="admin_single_info">
+                  <span>{`Diameter: ${singleProduct.diameter}`}</span>
+                  <span>{`Price: ${singleProduct.price}`}</span>
+                  <span>{`Strap Color: ${singleProduct.strapColor}`}</span>
+                  <span>{`Material: ${singleProduct.material}`}</span>
+                  <span>{`Waterproof?: ${singleProduct.waterproof}`}</span>
+                  <span>{`Quantity: ${singleProduct.quantity}`}</span>
                 </div>
-              )
-              }
+              )}
             </div>
           )}
         </div>

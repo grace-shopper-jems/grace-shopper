@@ -26,14 +26,14 @@ export class SingleProduct extends Component {
       <div className="singleProduct">
         <div className="back-button">
           <Link to="/products" className="singleLink">
-            <h2>Go Back</h2>
+            <h2>&larr; Go Back</h2>
           </Link>
-          <img className="single_img" src={`/${singleProduct.imgUrl}`} />
+          <img className="single_img" src={singleProduct.imgUrl} />
         </div>
         <div className="single_info">
           <span className="single_name">{`The ${singleProduct.name}`}</span>
           <span>Diameter: {singleProduct.diameter}</span>
-          <span>Waterproof: {singleProduct.waterproof}</span>
+          <span>Waterproof: {String(singleProduct.waterproof).charAt(0).toUpperCase() + String(singleProduct.waterproof).slice(1)}</span>
           <span>Material: {singleProduct.material}</span>
           <span>Strap Color: {singleProduct.strapColor}</span>
           <span>${(singleProduct.price / 100).toFixed(2)}</span>

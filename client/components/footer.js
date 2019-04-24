@@ -50,18 +50,9 @@ class Footer extends Component {
               </div>
             </div>
             <div className="footer__middle">
-              <h1 className="footer__title">Jems Information</h1>
+              <h1 className="footer__title">Timeless Information</h1>
               <p className="footer__paragraph">
-                Lorem Ipsum is simply dummy text of the printing and typesetting
-                industry. Lorem Ipsum has been the industry's standard dummy
-                text ever since the 1500s, when an unknown printer took a galley
-                of type and scrambled it to make a type specimen book. It has
-                survived not only five centuries, but also the leap into
-                electronic typesetting, remaining essentially unchanged. It was
-                popularised in the 1960s with the release of Letraset sheets
-                containing Lorem Ipsum passages, and more recently with desktop
-                publishing software like Aldus PageMaker including versions of
-                Lorem Ipsum.
+                Timeless watches was developed in 2019 by a team of dedicated watch enthusiasts. Join us on this journey through time. Get your Timeless watch today.
               </p>
             </div>
             <div className="footer__right">
@@ -106,7 +97,7 @@ class Footer extends Component {
         </div>
         <div className="footer__bottom">
           <p>
-            <span className="footer__bottom__copyright">&copy;</span> JEMS Watch
+            <span className="footer__bottom__copyright">&copy;</span> Timeless Watch
             Company. All Rights Reserved.
           </p>
         </div>

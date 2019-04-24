@@ -32,15 +32,15 @@ class Checkout extends React.Component {
   render() {
     return (
       <div className="checkout cart__checkout">
-        <StripeCheckout
-          amount={Number(this.props.total * 100)}
-          billingAddress
-          description="enter 4242 4242 4242 4242 to test"
-          name="Timeless"
-          stripeKey="pk_test_BtVtkp5NeH03CaIuy8PkxJE900WxrX8oUQ"
-          token={this.onToken()}
-          label="Checkout"
-        />
+          <StripeCheckout
+            amount={Math.round(Number(this.props.total*100*1.0875))}
+            billingAddress
+            description="enter 4242 4242 4242 4242 to test"
+            name="Timeless"
+            stripeKey="pk_test_BtVtkp5NeH03CaIuy8PkxJE900WxrX8oUQ"
+            token={this.onToken()}
+            label="Checkout"
+          />
       </div>
     )
   }

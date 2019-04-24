@@ -5,15 +5,19 @@ import {NavLink} from 'react-router-dom'
 import {logout} from '../store'
 
 class Navbar extends Component {
+  constructor() {
+    super()
+    this.logInClick = this.logInClick.bind(this)
+  }
   componentDidMount() {
     ;(function() {
       let sidemenu = document.querySelector('.sidemenu')
       let cart = document.querySelector('.cart')
-      document.querySelector('.toggle-sidemenu').onclick = function() {
-        sidemenu.classList.toggle('is-visible', true)
-      }
       document.querySelector('.close-sidemenu').onclick = function() {
         sidemenu.classList.toggle('is-visible', false)
+      }
+      document.querySelector('.toggle-sidemenu').onclick = function() {
+        sidemenu.classList.toggle('is-visible', true)
       }
       document.querySelector('.toggle-cart').onclick = function() {
         cart.classList.toggle('is-visible', true)
@@ -28,6 +32,11 @@ class Navbar extends Component {
       //   sidemenu.classList.toggle('is-visible', false)
       // }
     })()
+  }
+
+  logInClick() {
+    let sidemenu = document.querySelector('.sidemenu')
+    sidemenu.classList.toggle('is-visible', true)
   }
 
   render() {
@@ -64,15 +73,18 @@ class Navbar extends Component {
             </nav>
           </div>
           <div className="nav__middle">
-            <h1 className="nav__logo">Jems</h1>
+            <h1 className="nav__logo">Timeless</h1>
           </div>
           <div className="nav__right">
+            {/* {(this.props.isLoggedIn ? this.setState({loggedIn: true}) : this.setState({loggedIn: false}))} */}
             {this.props.isLoggedIn ? (
+              <div>
               <a className="nav__link" onClick={this.props.handleClick}>
                 <i className="far fa-user" />
               </a>
+              </div>
             ) : (
-              <a className="nav__link toggle-sidemenu">
+              <a className="nav__link toggle-sidemenu" onClick={this.logInClick}>
                 <i className="fas fa-user" />
               </a>
             )}

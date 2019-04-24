@@ -151,13 +151,12 @@ export class Cart extends Component {
                 ).toFixed(2)}
               </span>
             </div>
-            <Checkout
-              cart={this.props.cart.cart}
-              total={this.total(this.props.cart.cart)}
-            />
-          </div>
+              <Checkout
+                cart={this.props.cart.cart}
+                total={this.total(this.props.cart.cart)}
+              />
         </div>
-        <h1>Sub-Total: {this.total(this.props.cart.cart)}</h1>
+      </div>
       </div>
     )
   }

@@ -51,7 +51,7 @@ async function seed() {
       waterproof: true,
       quantity: 20,
       strapColor: 'Gold',
-      imgUrl: 'images/gold-band.png'
+      imgUrl: '/images/gold-band.png'
     }),
     Product.create({
       name: 'Fireman',
@@ -61,7 +61,7 @@ async function seed() {
       waterproof: true,
       quantity: 25,
       strapColor: 'Silver',
-      imgUrl: 'images/silver-band.png'
+      imgUrl: '/images/silver-band.png'
     }),
     Product.create({
       name: 'Officer',
@@ -71,7 +71,7 @@ async function seed() {
       waterproof: true,
       quantity: 5,
       strapColor: 'Maroon',
-      imgUrl: 'images/red-band.png'
+      imgUrl: '/images/red-band.png'
     }),
     Product.create({
       name: 'Mariner',
@@ -81,7 +81,7 @@ async function seed() {
       waterproof: true,
       quantity: 6,
       strapColor: 'Blue',
-      imgUrl: 'images/blue-band.png'
+      imgUrl: '/images/blue-band.png'
     }),
     Product.create({
       name: 'Chrome',
@@ -91,7 +91,7 @@ async function seed() {
       waterproof: true,
       quantity: 3,
       strapColor: 'Black',
-      imgUrl: 'images/black-band.png'
+      imgUrl: '/images/black-band.png'
     }),
     Product.create({
       name: 'General',
@@ -101,7 +101,7 @@ async function seed() {
       waterproof: true,
       quantity: 4,
       strapColor: 'Black',
-      imgUrl: 'images/simple-black.png'
+      imgUrl: '/images/simple-black.png'
     }),
     Product.create({
       name: 'Alpha',
@@ -111,7 +111,7 @@ async function seed() {
       waterproof: true,
       quantity: 2,
       strapColor: 'Red',
-      imgUrl: 'images/simple-red.png'
+      imgUrl: '/images/simple-red.png'
     }),
     Product.create({
       name: 'Deluxe',
@@ -121,7 +121,7 @@ async function seed() {
       waterproof: true,
       quantity: 3,
       strapColor: 'Black',
-      imgUrl: 'images/self-winding.png'
+      imgUrl: '/images/self-winding.png'
     })
   ])
 

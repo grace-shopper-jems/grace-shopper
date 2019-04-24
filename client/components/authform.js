@@ -64,7 +64,7 @@ class AuthForm extends Component {
         </div>
         {this.state.name === 'signup' ? (
           <p className="sidemenu__paragraph">
-            Create a JEMS account to keep track of your orders and stay
+            Create a Timeless account to keep track of your orders and stay
             up-to-date on new additions.
           </p>
         ) : (
